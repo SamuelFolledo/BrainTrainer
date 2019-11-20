@@ -16,7 +16,6 @@
 		33040B332385D32D00AA98F8 /* BrainTrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B322385D32D00AA98F8 /* BrainTrainerUITests.swift */; };
 		33040B462385DC5F00AA98F8 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B452385DC5F00AA98F8 /* MainVC.swift */; };
 		33040B482385DC7000AA98F8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B472385DC7000AA98F8 /* Color.swift */; };
-		33040B4A2385DC7600AA98F8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B492385DC7600AA98F8 /* Question.swift */; };
 		33040B4D2385DC9100AA98F8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B4C2385DC9100AA98F8 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +52,6 @@
 		33040B342385D32D00AA98F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33040B452385DC5F00AA98F8 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		33040B472385DC7000AA98F8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		33040B492385DC7600AA98F8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		33040B4C2385DC9100AA98F8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				33040B472385DC7000AA98F8 /* Color.swift */,
-				33040B492385DC7600AA98F8 /* Question.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,7 +313,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33040B4A2385DC7600AA98F8 /* Question.swift in Sources */,
 				33040B112385D32B00AA98F8 /* AppDelegate.swift in Sources */,
 				33040B482385DC7000AA98F8 /* Color.swift in Sources */,
 				33040B462385DC5F00AA98F8 /* MainVC.swift in Sources */,
