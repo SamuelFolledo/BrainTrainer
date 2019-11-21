@@ -8,8 +8,12 @@
 
 import UIKit
 
+protocol ColorProtocol {
+    
+}
+
 enum Color {
-    case red, orange, yellow, green, blue, purple
+    case none, red, orange, yellow, green, blue, purple
     
     var textColor: UIColor {
         switch self {
@@ -25,6 +29,8 @@ enum Color {
             return .blue
         case .purple:
             return .purple
+        case .none:
+            return .black
         }
     }
     
@@ -42,12 +48,19 @@ enum Color {
             return "blue"
         case .purple:
             return "purple"
+        case .none:
+            return "black"
         }
+    }
+    
+    init() {
+        self = .none
+        self.getRandomColor()
     }
 }
 
 extension Color: CaseIterable {
-    mutating func updateAsRandomColor() { //updates color to a random Color from all Color cases //CaseIterable allows me to use the allCases typeProperty
+    mutating func getRandomColor() { //updates color to a random Color from all Color cases //CaseIterable allows me to use the allCases typeProperty
         self = Color.allCases[Int(arc4random_uniform(UInt32(Color.allCases.count)))]
     }
 }
