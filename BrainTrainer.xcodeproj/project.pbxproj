@@ -17,6 +17,8 @@
 		33040B462385DC5F00AA98F8 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B452385DC5F00AA98F8 /* MainVC.swift */; };
 		33040B482385DC7000AA98F8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B472385DC7000AA98F8 /* Color.swift */; };
 		33040B4D2385DC9100AA98F8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B4C2385DC9100AA98F8 /* Constants.swift */; };
+		33040B552385F9E800AA98F8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B542385F9E800AA98F8 /* CardView.swift */; };
+		33040B582385FA0000AA98F8 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33040B572385FA0000AA98F8 /* CardView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		33040B452385DC5F00AA98F8 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		33040B472385DC7000AA98F8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		33040B4C2385DC9100AA98F8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		33040B542385F9E800AA98F8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		33040B572385FA0000AA98F8 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 		33040B412385DC0900AA98F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				33040B562385F9EF00AA98F8 /* CardView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +185,15 @@
 			children = (
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		33040B562385F9EF00AA98F8 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				33040B542385F9E800AA98F8 /* CardView.swift */,
+				33040B572385FA0000AA98F8 /* CardView.xib */,
+			);
+			path = CardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +302,7 @@
 			files = (
 				33040B1D2385D32D00AA98F8 /* LaunchScreen.storyboard in Resources */,
 				33040B1A2385D32D00AA98F8 /* Assets.xcassets in Resources */,
+				33040B582385FA0000AA98F8 /* CardView.xib in Resources */,
 				33040B182385D32B00AA98F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +332,7 @@
 				33040B482385DC7000AA98F8 /* Color.swift in Sources */,
 				33040B462385DC5F00AA98F8 /* MainVC.swift in Sources */,
 				33040B132385D32B00AA98F8 /* SceneDelegate.swift in Sources */,
+				33040B552385F9E800AA98F8 /* CardView.swift in Sources */,
 				33040B4D2385DC9100AA98F8 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

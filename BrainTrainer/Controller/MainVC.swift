@@ -13,6 +13,7 @@ class MainVC: UIViewController {
     
 //MARK: IBOutlets
     
+    @IBOutlet weak var cardView: CardView!
     
     
 //MARK: App LifeCycle
