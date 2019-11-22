@@ -27,27 +27,26 @@ class MainVC: UIViewController {
 //MARK: App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        topCardView.color.getRandomColor()
-        bottomCardView.color.getRandomColor()
-        // Do any additional setup after loading the view.
+        updateCardColor()
     }
     
 //MARK: Private Methods
-    private func updateColor() {
-        topCardView.color = Color.init()
-        
-        bottomCardView.color = Color.init()
+    private func updateCardColor() {
+        topCardView.text = Color()
+        topCardView.colorLabel.textColor = .black
+        bottomCardView.text = Color()
+        bottomCardView.textColor = Color()
     }
     
 //MARK: IBActions
     
     
     @IBAction func yesButtonTapped(_ sender: Any) {
-        updateColor()
+        updateCardColor()
     }
     
     @IBAction func noButtonTapped(_ sender: Any) {
-        updateColor()
+        updateCardColor()
     }
     @IBAction func pauseButtonTapped(_ sender: Any) {
     }
