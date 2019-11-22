@@ -9,7 +9,12 @@
 import UIKit
 
 class CardView: UIView {
-    var color: Color
+    var color: Color {
+        didSet {
+            colorLabel.text = color.text
+            colorLabel.textColor = color.textColor
+        }
+    }
     
     @IBOutlet weak var colorLabel: UILabel!
     

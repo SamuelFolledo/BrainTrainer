@@ -34,10 +34,9 @@ class MainVC: UIViewController {
     
 //MARK: Private Methods
     private func updateColor() {
-        let color = Color.init()
-        topCardView.color = color
+        topCardView.color = Color.init()
         
-        bottomCardView.color = color
+        bottomCardView.color = Color.init()
     }
     
 //MARK: IBActions
