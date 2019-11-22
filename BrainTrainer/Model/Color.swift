@@ -12,7 +12,7 @@ protocol ColorProtocol {
     
 }
 
-enum Color: String {
+enum Color {
     case red, orange, yellow, green, blue, purple
     
     var textColor: UIColor {
