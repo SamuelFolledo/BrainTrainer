@@ -37,14 +37,14 @@ class MainVC: UIViewController {
         topCardView.text = Color()
         topCardView.colorLabel.textColor = .black
         bottomCardView.text = Color()
-        bottomCardView.textColor = Color()
+        bottomCardView.color = Color()
     }
     
 //MARK: IBActions
     
     
     @IBAction func yesButtonTapped(_ sender: Any) {
-        if topCardView.text == bottomCardView.textColor {
+        if topCardView.text == bottomCardView.color {
             score += 1
         } else {
             score -= 1
@@ -53,7 +53,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func noButtonTapped(_ sender: Any) {
-        if topCardView.text != bottomCardView.textColor {
+        if topCardView.text != bottomCardView.color {
             score += 1
         } else {
             score -= 1

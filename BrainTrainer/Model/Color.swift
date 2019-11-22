@@ -62,8 +62,8 @@ extension Color: CaseIterable {
     }
 }
 
-extension Color: Equatable {
-    static func ==(lhs: Color, rhs: Color) -> Bool { //checks if Colors instances are the same
-        return lhs.text == rhs.text
-    }
-}
+//extension Color: Equatable {
+//    static func ==(lhs: Color, rhs: Color) -> Bool { //checks if Colors instances are the same
+//        return lhs.text == rhs.text
+//    }
+//}

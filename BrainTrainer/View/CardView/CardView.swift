@@ -9,9 +9,9 @@
 import UIKit
 
 class CardView: UIView {
-    var textColor: Color {
+    var color: Color {
         didSet {
-            colorLabel.textColor = textColor.textColor
+            colorLabel.textColor = color.textColor
         }
     }
     
@@ -25,8 +25,7 @@ class CardView: UIView {
     @IBOutlet weak var colorLabel: UILabel!
     
     override init(frame: CGRect) { //for programmatically
-//        color = Color.init()
-        textColor = Color()
+        color = Color()
         text = Color()
         super.init(frame: frame)
         initializeXibFile()
@@ -34,7 +33,7 @@ class CardView: UIView {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        textColor = Color()
+        color = Color()
         text = Color()
         super.init(coder: aDecoder)
         initializeXibFile()
@@ -43,7 +42,7 @@ class CardView: UIView {
     
     func setupView() {
         colorLabel.text = text.text
-        colorLabel.textColor = textColor.textColor
+        colorLabel.textColor = color.textColor
         colorLabel.shadowColor = .none
     }
 
