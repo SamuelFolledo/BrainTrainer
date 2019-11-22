@@ -42,14 +42,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U28-gk-Q3v" customClass="CardView" customModule="BrainTrainer" customModuleProvider="target">
-                                <rect key="frame" x="76" y="349" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U28-gk-Q3v" customClass="CardView" customModule="BrainTrainer" customModuleProvider="target">
+                                <rect key="frame" x="50" y="353" width="275" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qTE-Bj-zYs" customClass="CardView" customModule="BrainTrainer" customModuleProvider="target">
-                                <rect key="frame" x="76" y="190" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTE-Bj-zYs" customClass="CardView" customModule="BrainTrainer" customModuleProvider="target">
+                                <rect key="frame" x="50" y="186" width="275" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-Dh-lYq">
@@ -85,8 +83,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-HO-8lg">
-                                                <rect key="frame" x="74" y="15" width="29" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdl-HO-8lg">
+                                                <rect key="frame" x="74" y="15" width="11" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -97,6 +95,13 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Does the meaning match the text color?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymm-8J-RDN">
+                                <rect key="frame" x="35" y="116" width="305" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwx-dB-PdV">
                                 <rect key="frame" x="18" y="13" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -105,23 +110,34 @@
                                     <action selector="pauseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d2b-JU-3K1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Does the meaning match the text color?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymm-8J-RDN">
-                                <rect key="frame" x="35" y="116" width="305" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lww-BV-2UN">
+                                <rect key="frame" x="155.5" y="301.5" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Lww-BV-2UN" secondAttribute="height" id="rou-tp-ag5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qTE-Bj-zYs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="3:4" id="18E-FN-pO5"/>
+                            <constraint firstItem="U28-gk-Q3v" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="5:4" id="25t-ta-ogQ"/>
                             <constraint firstItem="xYQ-o3-abk" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="2:15" id="6rj-SX-hUd"/>
+                            <constraint firstItem="Lww-BV-2UN" firstAttribute="height" secondItem="qTE-Bj-zYs" secondAttribute="height" multiplier="1:2" id="Bgz-dT-UVJ"/>
                             <constraint firstItem="9M9-Dh-lYq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="ENr-Q4-gg5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qTE-Bj-zYs" secondAttribute="trailing" constant="50" id="F7V-Im-fm0"/>
+                            <constraint firstItem="Lww-BV-2UN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HMn-Sx-c7i"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xYQ-o3-abk" secondAttribute="bottom" id="R7H-re-d06"/>
+                            <constraint firstItem="U28-gk-Q3v" firstAttribute="leading" secondItem="qTE-Bj-zYs" secondAttribute="leading" id="Rb1-Sd-2AZ"/>
                             <constraint firstItem="9M9-Dh-lYq" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="3:5" id="aOF-Yu-ced"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9M9-Dh-lYq" secondAttribute="trailing" constant="10" id="f6a-zb-2uZ"/>
+                            <constraint firstItem="U28-gk-Q3v" firstAttribute="height" secondItem="qTE-Bj-zYs" secondAttribute="height" id="g1L-nt-zmK"/>
                             <constraint firstItem="xYQ-o3-abk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="je5-Re-CW8"/>
                             <constraint firstItem="xYQ-o3-abk" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="qne-3y-paq"/>
+                            <constraint firstItem="qTE-Bj-zYs" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rOB-it-QkE"/>
+                            <constraint firstItem="qTE-Bj-zYs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="wKF-zD-zqY"/>
+                            <constraint firstItem="U28-gk-Q3v" firstAttribute="trailing" secondItem="qTE-Bj-zYs" secondAttribute="trailing" id="wW9-rx-DoG"/>
+                            <constraint firstItem="Lww-BV-2UN" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="wwN-5j-caH"/>
+                            <constraint firstItem="qTE-Bj-zYs" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.191904" id="xAd-iL-Msq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
