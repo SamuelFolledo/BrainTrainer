@@ -9,32 +9,42 @@
 import UIKit
 
 class CardView: UIView {
-    var color: Color {
+    var textColor: Color {
         didSet {
-            colorLabel.text = color.text
-            colorLabel.textColor = color.textColor
+            colorLabel.textColor = textColor.textColor
         }
     }
+    
+    var text: Color {
+        didSet {
+            colorLabel.text = text.text
+        }
+    }
+    
     
     @IBOutlet weak var colorLabel: UILabel!
     
     override init(frame: CGRect) { //for programmatically
-        color = Color.init()
+//        color = Color.init()
+        textColor = Color()
+        text = Color()
         super.init(frame: frame)
         initializeXibFile()
         setupView() //idk why it is required
     }
 
     required init?(coder aDecoder: NSCoder) {
-        color = Color.init()
+        textColor = Color()
+        text = Color()
         super.init(coder: aDecoder)
         initializeXibFile()
         setupView() //required or it won't update colorLabel
     }
     
     func setupView() {
-        colorLabel.text = color.text
-        colorLabel.textColor = color.textColor
+        colorLabel.text = text.text
+        colorLabel.textColor = textColor.textColor
+        colorLabel.shadowColor = .none
     }
 
     func initializeXibFile() {
