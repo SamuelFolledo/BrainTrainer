@@ -13,11 +13,11 @@ class CardView: UIView {
     
     @IBOutlet weak var colorLabel: UILabel!
     
-    override init(frame: CGRect) {
+    override init(frame: CGRect) { //for programmatically
         color = Color.init()
         super.init(frame: frame)
         initializeXibFile()
-//        setupView() //idk why it is required
+        setupView() //idk why it is required
     }
 
     required init?(coder aDecoder: NSCoder) {
