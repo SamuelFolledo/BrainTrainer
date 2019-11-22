@@ -25,6 +25,9 @@
                                         <state key="normal" title="NO">
                                             <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="noButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GD6-Vj-B5P"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkm-fM-mGO">
                                         <rect key="frame" x="192.5" y="0.0" width="182.5" height="89"/>
@@ -33,6 +36,9 @@
                                         <state key="normal" title="YES">
                                             <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="yesButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Sn-GA-5zH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -95,6 +101,9 @@
                                 <rect key="frame" x="18" y="13" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="pauseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d2b-JU-3K1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Does the meaning match the text color?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymm-8J-RDN">
                                 <rect key="frame" x="35" y="116" width="305" height="21"/>
@@ -117,7 +126,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="cardView" destination="U28-gk-Q3v" id="btg-LA-CjW"/>
+                        <outlet property="bottomCardView" destination="U28-gk-Q3v" id="nXF-91-25N"/>
+                        <outlet property="noButton" destination="cUN-3R-k7m" id="LVK-kV-9hI"/>
+                        <outlet property="pauseButton" destination="Cwx-dB-PdV" id="Xyw-Bq-brR"/>
+                        <outlet property="scoreLabel" destination="cdl-HO-8lg" id="XHS-dv-4zI"/>
+                        <outlet property="timeLabel" destination="7QB-AB-DRR" id="2Q9-hu-SS9"/>
+                        <outlet property="topCardView" destination="qTE-Bj-zYs" id="Mg0-RR-QdN"/>
+                        <outlet property="yesButton" destination="Vkm-fM-mGO" id="2xX-IY-RPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
