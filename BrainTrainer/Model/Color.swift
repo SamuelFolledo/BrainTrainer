@@ -12,8 +12,8 @@ protocol ColorProtocol {
     
 }
 
-enum Color {
-    case none, red, orange, yellow, green, blue, purple
+enum Color: String {
+    case red, orange, yellow, green, blue, purple
     
     var textColor: UIColor {
         switch self {
@@ -29,8 +29,6 @@ enum Color {
             return .blue
         case .purple:
             return .purple
-        case .none:
-            return .black
         }
     }
     
@@ -48,13 +46,11 @@ enum Color {
             return "blue"
         case .purple:
             return "purple"
-        case .none:
-            return "black"
         }
     }
     
     init() {
-        self = .none
+        self = .red
         self.getRandomColor()
     }
 }
@@ -67,7 +63,7 @@ extension Color: CaseIterable {
 }
 
 extension Color: Equatable {
-    static func ==(lhs: Color, rhs: Color) -> Bool { //checks if Color's text are the same
-        return lhs.text == rhs.text //&& lhs.age == rhs.age
+    static func ==(lhs: Color, rhs: Color) -> Bool { //checks if Colors instances are the same
+        return lhs.text == rhs.text
     }
 }
