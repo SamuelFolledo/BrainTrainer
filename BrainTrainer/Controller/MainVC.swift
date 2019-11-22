@@ -10,15 +10,17 @@ import UIKit
 
 class MainVC: UIViewController {
 //MARK: Properties
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "\(score)"
+        }
+    }
     
 //MARK: IBOutlets
-    
     @IBOutlet weak var topCardView: CardView!
     @IBOutlet weak var bottomCardView: CardView!
-    
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
@@ -42,10 +44,20 @@ class MainVC: UIViewController {
     
     
     @IBAction func yesButtonTapped(_ sender: Any) {
+        if topCardView.text == bottomCardView.textColor {
+            score += 1
+        } else {
+            score -= 1
+        }
         updateCardColor()
     }
     
     @IBAction func noButtonTapped(_ sender: Any) {
+        if topCardView.text != bottomCardView.textColor {
+            score += 1
+        } else {
+            score -= 1
+        }
         updateCardColor()
     }
     @IBAction func pauseButtonTapped(_ sender: Any) {
