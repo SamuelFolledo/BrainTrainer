@@ -24,6 +24,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var isCorrectImageView: UIImageView!
     
     
 //MARK: App LifeCycle

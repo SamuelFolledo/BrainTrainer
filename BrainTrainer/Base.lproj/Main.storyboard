@@ -143,6 +143,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomCardView" destination="U28-gk-Q3v" id="nXF-91-25N"/>
+                        <outlet property="isCorrectImageView" destination="Lww-BV-2UN" id="cKH-ce-2GO"/>
                         <outlet property="noButton" destination="cUN-3R-k7m" id="LVK-kV-9hI"/>
                         <outlet property="pauseButton" destination="Cwx-dB-PdV" id="Xyw-Bq-brR"/>
                         <outlet property="scoreLabel" destination="cdl-HO-8lg" id="XHS-dv-4zI"/>
