@@ -14,7 +14,7 @@
 		33040B1D2385D32D00AA98F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33040B1B2385D32D00AA98F8 /* LaunchScreen.storyboard */; };
 		33040B282385D32D00AA98F8 /* BrainTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B272385D32D00AA98F8 /* BrainTrainerTests.swift */; };
 		33040B332385D32D00AA98F8 /* BrainTrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B322385D32D00AA98F8 /* BrainTrainerUITests.swift */; };
-		33040B462385DC5F00AA98F8 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B452385DC5F00AA98F8 /* MainVC.swift */; };
+		33040B462385DC5F00AA98F8 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B452385DC5F00AA98F8 /* GameVC.swift */; };
 		33040B482385DC7000AA98F8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B472385DC7000AA98F8 /* Color.swift */; };
 		33040B4D2385DC9100AA98F8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B4C2385DC9100AA98F8 /* Constants.swift */; };
 		33040B552385F9E800AA98F8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B542385F9E800AA98F8 /* CardView.swift */; };
@@ -53,7 +53,7 @@
 		33040B2E2385D32D00AA98F8 /* BrainTrainerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainTrainerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33040B322385D32D00AA98F8 /* BrainTrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainTrainerUITests.swift; sourceTree = "<group>"; };
 		33040B342385D32D00AA98F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33040B452385DC5F00AA98F8 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		33040B452385DC5F00AA98F8 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		33040B472385DC7000AA98F8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		33040B4C2385DC9100AA98F8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		33040B542385F9E800AA98F8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		33040B422385DC0D00AA98F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				33040B452385DC5F00AA98F8 /* MainVC.swift */,
+				33040B452385DC5F00AA98F8 /* GameVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -334,7 +334,7 @@
 				33040B5A2388EC9B00AA98F8 /* UIImageView+extensions.swift in Sources */,
 				33040B112385D32B00AA98F8 /* AppDelegate.swift in Sources */,
 				33040B482385DC7000AA98F8 /* Color.swift in Sources */,
-				33040B462385DC5F00AA98F8 /* MainVC.swift in Sources */,
+				33040B462385DC5F00AA98F8 /* GameVC.swift in Sources */,
 				33040B132385D32B00AA98F8 /* SceneDelegate.swift in Sources */,
 				33040B552385F9E800AA98F8 /* CardView.swift in Sources */,
 				33040B4D2385DC9100AA98F8 /* Constants.swift in Sources */,
