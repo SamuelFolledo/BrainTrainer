@@ -45,8 +45,10 @@ class MainVC: UIViewController {
     }
     
 //MARK: Private Methods
-    private func setupViews() {
-        isCorrectImageView.isHidden = true
+    private func showIsCorrectImageView(isCorrect: Bool) {
+        isCorrectImageView.image = isCorrect ? UIImage(named: "correct") : UIImage(named: "wrong")
+        isCorrectImageView.isHidden = false
+        
     }
     
     private func updateCardColor() {
@@ -56,14 +58,18 @@ class MainVC: UIViewController {
         bottomCardView.color = Color()
     }
     
+    private func setupViews() {
+        isCorrectImageView.isHidden = true
+    }
+    
 //MARK: IBActions
-    
-    
     @IBAction func yesButtonTapped(_ sender: Any) {
         if topCardView.text == bottomCardView.color {
             score += 1
+            showIsCorrectImageView(isCorrect: true)
         } else {
             score -= 1
+            showIsCorrectImageView(isCorrect: false)
         }
         updateCardColor()
     }
@@ -71,8 +77,10 @@ class MainVC: UIViewController {
     @IBAction func noButtonTapped(_ sender: Any) {
         if topCardView.text != bottomCardView.color {
             score += 1
+            showIsCorrectImageView(isCorrect: true)
         } else {
             score -= 1
+            showIsCorrectImageView(isCorrect: false)
         }
         updateCardColor()
     }
