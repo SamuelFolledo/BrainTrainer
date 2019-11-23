@@ -8,8 +8,18 @@
 
 import UIKit
 
+enum GameState {
+    case title, playing, paused, gameOver
+}
+
+enum GameDifficulty {
+    case easy, medium, hard
+}
+
 class MainVC: UIViewController {
 //MARK: Properties
+    var gameState: GameState = .playing
+    var gameDifficulty: GameDifficulty = .easy
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
@@ -30,10 +40,15 @@ class MainVC: UIViewController {
 //MARK: App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         updateCardColor()
     }
     
 //MARK: Private Methods
+    private func setupViews() {
+        isCorrectImageView.isHidden = true
+    }
+    
     private func updateCardColor() {
         topCardView.text = Color()
         topCardView.colorLabel.textColor = .black
@@ -62,6 +77,16 @@ class MainVC: UIViewController {
         updateCardColor()
     }
     @IBAction func pauseButtonTapped(_ sender: Any) {
+        if gameState == .playing {
+            pauseButton.isHidden = false
+            pauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            gameState = .paused
+        } else if gameState == .paused {
+            pauseButton.setImage(UIImage(named: "play"), for: .normal)
+            gameState = .playing
+        } else {
+            pauseButton.isHidden = true
+        }
     }
     
 //MARK: Helper Methods
