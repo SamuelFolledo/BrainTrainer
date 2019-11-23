@@ -25,10 +25,16 @@ class GameVC: UIViewController {
             scoreLabel.text = "Score: \(score)"
         }
     }
-    let correctImage: UIImage = UIImage(named: "correct")!
-    let wrongImage: UIImage = UIImage(named: "wrong")!
-    let pauseImage: UIImage = UIImage(named: "pause")!
-    let playImage: UIImage = UIImage(named: "play")!
+    var timer: Timer?
+    var timerCounter: Int = 5 {
+        didSet {
+            timeLabel.text = "0\(timerCounter)"
+            if timerCounter == 0 {
+                timer?.invalidate()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     
 //MARK: IBOutlets
     @IBOutlet weak var topCardView: CardView!
@@ -40,13 +46,15 @@ class GameVC: UIViewController {
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var isCorrectImageView: UIImageView!
     
-    
 //MARK: App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         updateCardColor()
-        print(gameDifficulty)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        timer?.invalidate()
     }
     
 //MARK: Private Methods
@@ -54,9 +62,11 @@ class GameVC: UIViewController {
         if (topCardView.text == bottomCardView.color && isYes) || (topCardView.text != bottomCardView.color && !isYes) {
             score += 1
             showIsCorrectImageView(isCorrect: true)
+            timerCounter = 5
         } else {
             score -= 1
             showIsCorrectImageView(isCorrect: false)
+            self.dismiss(animated: true, completion: nil)
         }
         updateCardColor()
     }
@@ -77,6 +87,7 @@ class GameVC: UIViewController {
     private func setupViews() {
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateGameTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
     }
     
 //MARK: IBActions
@@ -98,5 +109,7 @@ class GameVC: UIViewController {
     }
     
 //MARK: Helper Methods
-    
+    @objc func updateGameTimer() {
+        timerCounter -= 1
+    }
 }
