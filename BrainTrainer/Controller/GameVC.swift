@@ -1,5 +1,5 @@
 //
-//  MainVC.swift
+//  GameVC.swift
 //  BrainTrainer
 //
 //  Created by Macbook Pro 15 on 11/20/19.
@@ -16,7 +16,7 @@ enum GameDifficulty {
     case easy, medium, hard
 }
 
-class MainVC: UIViewController {
+class GameVC: UIViewController {
 //MARK: Properties
     var gameState: GameState = .playing
     var gameDifficulty: GameDifficulty = .easy
