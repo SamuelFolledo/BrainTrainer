@@ -110,7 +110,7 @@
                                     <action selector="pauseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d2b-JU-3K1"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lww-BV-2UN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="Lww-BV-2UN">
                                 <rect key="frame" x="155.5" y="301.5" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Lww-BV-2UN" secondAttribute="height" id="rou-tp-ag5"/>
@@ -157,4 +157,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checked" width="32" height="32"/>
+    </resources>
 </document>
