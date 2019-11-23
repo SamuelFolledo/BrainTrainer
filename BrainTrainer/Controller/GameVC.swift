@@ -25,8 +25,9 @@ class GameVC: UIViewController {
             scoreLabel.text = "Score: \(score)"
         }
     }
-    var timer: Timer?
-    var timerCounter: Int = 5 {
+    var maxTime: Int!
+    var timer: Timer!
+    var timerCounter: Int = 0 {
         didSet {
             timeLabel.text = "0\(timerCounter)"
             if timerCounter == 0 {
@@ -62,7 +63,7 @@ class GameVC: UIViewController {
         if (topCardView.text == bottomCardView.color && isYes) || (topCardView.text != bottomCardView.color && !isYes) {
             score += 1
             showIsCorrectImageView(isCorrect: true)
-            timerCounter = 5
+            timerCounter = maxTime
         } else {
             score -= 1
             showIsCorrectImageView(isCorrect: false)
@@ -85,6 +86,17 @@ class GameVC: UIViewController {
     }
     
     private func setupViews() {
+        switch gameDifficulty {
+        case .easy:
+            maxTime = 5
+        case .medium:
+            maxTime = 3
+        case .hard:
+            maxTime = 3
+        case .none:
+            break
+        }
+        timerCounter = maxTime
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateGameTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
