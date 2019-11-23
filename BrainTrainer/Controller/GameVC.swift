@@ -19,7 +19,7 @@ enum GameDifficulty {
 class GameVC: UIViewController {
 //MARK: Properties
     var gameState: GameState = .playing
-    var gameDifficulty: GameDifficulty = .easy
+    var gameDifficulty: GameDifficulty!
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
@@ -46,6 +46,7 @@ class GameVC: UIViewController {
         super.viewDidLoad()
         setupViews()
         updateCardColor()
+        print(gameDifficulty)
     }
     
 //MARK: Private Methods
