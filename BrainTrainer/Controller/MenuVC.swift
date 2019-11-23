@@ -26,24 +26,34 @@ class MenuVC: UIViewController {
 //MARK: App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupViews()
     }
     
+//MARK: Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let difficulty: GameDifficulty = sender as? GameDifficulty else { return }
+        let gameVC: GameVC = segue.destination as! GameVC
+        gameVC.gameDifficulty = difficulty
+    }
     
 //MARK: Private Methods
+    private func setupViews() {
+        easyButton.isDifficultyButton()
+        mediumButton.isDifficultyButton()
+        hardButton.isDifficultyButton()
+    }
     
 //MARK: IBActions
     @IBAction func easyButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: kTOGAMEVC, sender: nil)
+        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.easy)
     }
     
     @IBAction func mediumButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: kTOGAMEVC, sender: nil)
+        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.medium)
     }
     
     @IBAction func hardButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: kTOGAMEVC, sender: nil)
+        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.hard)
     }
     
 //MARK: Helpers

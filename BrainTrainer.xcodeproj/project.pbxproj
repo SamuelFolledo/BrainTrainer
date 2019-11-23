@@ -21,6 +21,7 @@
 		33040B582385FA0000AA98F8 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33040B572385FA0000AA98F8 /* CardView.xib */; };
 		33040B5A2388EC9B00AA98F8 /* UIImageView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B592388EC9B00AA98F8 /* UIImageView+extensions.swift */; };
 		33040B5C2388F98F00AA98F8 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B5B2388F98F00AA98F8 /* MenuVC.swift */; };
+		33040B5E2388FFCA00AA98F8 /* UIButton+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B5D2388FFCA00AA98F8 /* UIButton+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		33040B572385FA0000AA98F8 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		33040B592388EC9B00AA98F8 /* UIImageView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extensions.swift"; sourceTree = "<group>"; };
 		33040B5B2388F98F00AA98F8 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		33040B5D2388FFCA00AA98F8 /* UIButton+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				33040B592388EC9B00AA98F8 /* UIImageView+extensions.swift */,
+				33040B5D2388FFCA00AA98F8 /* UIButton+extensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				33040B462385DC5F00AA98F8 /* GameVC.swift in Sources */,
 				33040B132385D32B00AA98F8 /* SceneDelegate.swift in Sources */,
 				33040B5C2388F98F00AA98F8 /* MenuVC.swift in Sources */,
+				33040B5E2388FFCA00AA98F8 /* UIButton+extensions.swift in Sources */,
 				33040B552385F9E800AA98F8 /* CardView.swift in Sources */,
 				33040B4D2385DC9100AA98F8 /* Constants.swift in Sources */,
 			);

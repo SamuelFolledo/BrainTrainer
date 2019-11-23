@@ -178,7 +178,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg3-tJ-b2Q">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="42"/>
-                                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="50"/>
+                                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
                                                 <state key="normal" title="Easy">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -204,7 +204,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LS-F5-pld">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="42"/>
-                                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="50"/>
+                                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
                                                 <state key="normal" title="Medium">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -225,7 +225,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atx-wH-ASI">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="42.5"/>
-                                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="50"/>
+                                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
                                                 <state key="normal" title="Hard">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -283,7 +283,7 @@
                     <connections>
                         <outlet property="easyButton" destination="eg3-tJ-b2Q" id="sFS-Xf-LsV"/>
                         <outlet property="easyScoreLabel" destination="E5P-PP-wPq" id="jr2-0l-yg8"/>
-                        <outlet property="hardButton" destination="5LS-F5-pld" id="TCX-vr-xHe"/>
+                        <outlet property="hardButton" destination="Atx-wH-ASI" id="PV2-o6-XZG"/>
                         <outlet property="hardScoreLabel" destination="yQk-4f-Ke4" id="37M-wK-Kyp"/>
                         <outlet property="logoImageView" destination="6jC-Kz-9t2" id="itz-pc-y2b"/>
                         <outlet property="mediumButton" destination="5LS-F5-pld" id="PWw-Ug-Wrh"/>
