@@ -7,3 +7,6 @@
 //
 
 import Foundation
+
+//segue identifiers
+let kTOGAMEVC: String = "toGameVC"
