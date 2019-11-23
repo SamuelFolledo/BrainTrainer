@@ -48,7 +48,7 @@ class MainVC: UIViewController {
     private func showIsCorrectImageView(isCorrect: Bool) {
         isCorrectImageView.image = isCorrect ? UIImage(named: "correct") : UIImage(named: "wrong")
         isCorrectImageView.isHidden = false
-        
+        isCorrectImageView.enlargeThenShrinkAnimation()
     }
     
     private func updateCardColor() {
@@ -60,6 +60,7 @@ class MainVC: UIViewController {
     
     private func setupViews() {
         isCorrectImageView.isHidden = true
+        isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
     }
     
 //MARK: IBActions
