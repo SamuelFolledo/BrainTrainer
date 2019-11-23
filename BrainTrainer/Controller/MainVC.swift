@@ -12,7 +12,7 @@ class MainVC: UIViewController {
 //MARK: Properties
     var score = 0 {
         didSet {
-            scoreLabel.text = "\(score)"
+            scoreLabel.text = "Score: \(score)"
         }
     }
     
