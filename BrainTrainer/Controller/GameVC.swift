@@ -32,7 +32,7 @@ class GameVC: UIViewController {
             timeLabel.text = "0\(timerCounter)"
             if timerCounter == 0 {
                 timer?.invalidate()
-                self.dismiss(animated: true, completion: nil)
+                gameOver()
             }
         }
     }
@@ -64,16 +64,46 @@ class GameVC: UIViewController {
             score += 1
             showIsCorrectImageView(isCorrect: true)
             timerCounter = maxTime
+            updateCardColor()
         } else {
-            score -= 1
+//            score -= 1
             showIsCorrectImageView(isCorrect: false)
+            gameOver()
+        }
+    }
+    
+    private func gameOver() {
+        checkHighScore() {
             self.dismiss(animated: true, completion: nil)
         }
-        updateCardColor()
+    }
+    
+    private func checkHighScore(completion: @escaping () -> Void) {
+        switch gameDifficulty {
+        case .easy:
+            let highScore = UserDefaults.standard.integer(forKey: kEASYHIGHSCORE)
+            if self.score > highScore {
+                UserDefaults.standard.set(self.score, forKey: kEASYHIGHSCORE)
+            }
+        case .medium:
+            let highScore = UserDefaults.standard.integer(forKey: kMEDIUMHIGHSCORE)
+            if self.score > highScore {
+                UserDefaults.standard.set(self.score, forKey: kMEDIUMHIGHSCORE)
+            }
+        case .hard:
+            let highScore = UserDefaults.standard.integer(forKey: kHARDHIGHSCORE)
+            if self.score > highScore {
+               UserDefaults.standard.set(self.score, forKey: kHARDHIGHSCORE)
+            }
+        case .none:
+            break
+        }
+        UserDefaults.standard.synchronize() //set the high score
+        completion()
     }
     
     private func showIsCorrectImageView(isCorrect: Bool) {
-        isCorrectImageView.image = isCorrect ? correctImage : wrongImage
+        isCorrectImageView.image = isCorrect ? kCORRECTIMAGE : kWRONGIMAGE
         isCorrectImageView.isHidden = false
         isCorrectImageView.enlargeThenShrinkAnimation()
     }
@@ -111,11 +141,11 @@ class GameVC: UIViewController {
         evaluateAnswer(isYes: false)
     }
     @IBAction func pauseButtonTapped(_ sender: Any) {
-        if pauseButton.image(for: .normal) == playImage {
-            pauseButton.setImage(pauseImage, for: .normal)
+        if pauseButton.image(for: .normal) == kPLAYIMAGE {
+            pauseButton.setImage(kPAUSEIMAGE, for: .normal)
             gameState = .playing
         } else {
-            pauseButton.setImage(playImage, for: .normal)
+            pauseButton.setImage(kPLAYIMAGE, for: .normal)
             gameState = .paused
         }
     }
