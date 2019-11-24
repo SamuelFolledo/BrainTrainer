@@ -40,7 +40,7 @@ class GameVC: UIViewController {
             case .easy:
                 maxTime = 5
             case .medium:
-                maxTime = 3
+                maxTime = 5
             case .hard:
                 maxTime = 3
             case .none:
@@ -66,7 +66,7 @@ class GameVC: UIViewController {
             timeLabel.text = "\(String(titleTimerCounter))" //round up to 1 decimal place
             if titleTimerCounter == 1 {
                 pauseLabel.text = "Go!"
-            } else if titleTimerCounter < 1 {
+            } else if titleTimerCounter < 1 { //start titleTimer and start playing
                 titleTimer?.invalidate()
                 timerCounter = maxTime
                 gameState = .playing
@@ -136,7 +136,6 @@ class GameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-//        updateCardColor()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -145,21 +144,32 @@ class GameVC: UIViewController {
     
 //MARK: Private Methods
     private func evaluateAnswer(isYes: Bool) {
-        if (topCardView.text == bottomCardView.color && isYes) || (topCardView.text != bottomCardView.color && !isYes) {
-            score += 1
-            showIsCorrectImageView(isCorrect: true)
-            timerCounter = maxTime
-            updateCardColor()
-        } else {
-//            score -= 1
-            showIsCorrectImageView(isCorrect: false)
-            gameState = .gameOver
+        if !isOpposite { //isOpposite == false
+            if (topCardView.text == bottomCardView.color && isYes) || (topCardView.text != bottomCardView.color && !isYes) {
+                score += 1
+                showIsCorrectImageView(isCorrect: true)
+                timerCounter = maxTime
+                updateCardColor()
+            } else {
+                showIsCorrectImageView(isCorrect: false)
+                gameState = .gameOver
+            }
+        } else { //isOpposite == true; if in medium or hard difficulty only
+            if (topCardView.text == bottomCardView.color && !isYes) || (topCardView.text != bottomCardView.color && isYes) {
+                score += 1
+                showIsCorrectImageView(isCorrect: true)
+                timerCounter = maxTime
+                updateCardColor()
+            } else {
+                showIsCorrectImageView(isCorrect: false)
+                gameState = .gameOver
+            }
         }
     }
     
     private func updateCardColor() {
         switch gameDifficulty {
-        case .hard:
+        case .medium, .hard: //isOpposite can only be true if we are in hard mode
             isOpposite = Bool.random()
             if isOpposite { //black background
                 topCardView.changeToBlackBackground()
