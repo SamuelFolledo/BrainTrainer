@@ -97,6 +97,15 @@ class GameVC: UIViewController {
             }
         }
     }
+    var pauseCounter: Int! {
+        didSet {
+            pauseLabel.text = "\(String(pauseCounter))x pauses remaining"
+            pauseLabel.fadeIn(duration: 0.5)
+            if pauseCounter < 1 {
+                gameState = .gameOver
+            }
+        }
+    }
     
 //MARK: IBOutlets
     @IBOutlet weak var topCardView: CardView!
@@ -107,6 +116,7 @@ class GameVC: UIViewController {
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var isCorrectImageView: UIImageView!
+    @IBOutlet weak var pauseLabel: UILabel!
     
 //MARK: App LifeCycle
     override func viewDidLoad() {
@@ -133,12 +143,6 @@ class GameVC: UIViewController {
         }
     }
     
-    private func showIsCorrectImageView(isCorrect: Bool) { //the correct or wrong indicator
-        isCorrectImageView.image = isCorrect ? kCORRECTIMAGE : kWRONGIMAGE
-        isCorrectImageView.isHidden = false
-        isCorrectImageView.enlargeThenShrinkAnimation()
-    }
-    
     private func updateCardColor() {
         topCardView.text = Color()
         topCardView.colorLabel.textColor = .black
@@ -146,10 +150,17 @@ class GameVC: UIViewController {
         bottomCardView.color = Color()
     }
     
+    private func showIsCorrectImageView(isCorrect: Bool) { //the correct or wrong indicator
+        isCorrectImageView.image = isCorrect ? kCORRECTIMAGE : kWRONGIMAGE
+        isCorrectImageView.isHidden = false
+        isCorrectImageView.enlargeThenShrinkAnimation()
+    }
+    
     private func setupViews() {
         pauseButton.applyShadow()
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+        pauseCounter = 3
         timerCounter = maxTime
         gameState = .playing
     }
@@ -174,6 +185,7 @@ class GameVC: UIViewController {
         noButton.fadeOut(duration: 0.3)
         yesButton.isEnabled = false
         noButton.isEnabled = false
+        pauseCounter -= 1
     }
     
     private func playGame() {
@@ -184,6 +196,7 @@ class GameVC: UIViewController {
         noButton.fadeIn(duration: 0.3)
         yesButton.isEnabled = true
         noButton.isEnabled = true
+        pauseLabel.fadeOut(duration: 0.3)
         startTimer()
     }
     
