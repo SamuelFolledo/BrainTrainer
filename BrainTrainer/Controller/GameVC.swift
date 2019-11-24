@@ -23,14 +23,17 @@ class GameVC: UIViewController {
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
+            if score % 3 == 0 && maxTime > 1 { //everytime user scores 3 points, reduce the time. maxTime will not go lower than 1 seconds
+                maxTime -= 0.1
+            }
         }
     }
-    var maxTime: Int!
+    var maxTime: Double!
     var timer: Timer!
-    var timerCounter: Int = 0 {
+    var timerCounter: Double = 0 {
         didSet {
-            timeLabel.text = "0\(timerCounter)"
-            if timerCounter == 0 {
+            timeLabel.text = "\(String(format: "%.1f", timerCounter))" //round up to 1 decimal place
+            if timerCounter <= 0 {
                 timer?.invalidate()
                 gameOver()
             }
@@ -122,7 +125,7 @@ class GameVC: UIViewController {
         case .medium:
             maxTime = 3
         case .hard:
-            maxTime = 2
+            maxTime = 3
         case .none:
             break
         }
