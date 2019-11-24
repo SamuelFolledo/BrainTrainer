@@ -44,6 +44,7 @@ class CardView: UIView {
         colorLabel.text = text.text
         colorLabel.textColor = color.textColor
         colorLabel.shadowColor = .none
+        self.applyShadow()
     }
 
     func initializeXibFile() {
