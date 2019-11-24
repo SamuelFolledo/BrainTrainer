@@ -18,6 +18,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard" translatesAutoresizingMaskIntoConstraints="NO" id="u1c-id-e5d">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfp-9M-pMa">
+                                <rect key="frame" x="37.5" y="250" width="300" height="167"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xYQ-o3-abk" userLabel="buttons Stack View">
                                 <rect key="frame" x="0.0" y="578" width="375" height="89"/>
                                 <subviews>
@@ -98,6 +104,7 @@
                             <constraint firstItem="Ymm-8J-RDN" firstAttribute="centerX" secondItem="qTE-Bj-zYs" secondAttribute="centerX" id="0iV-nS-hpV"/>
                             <constraint firstItem="qTE-Bj-zYs" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="5:6" id="18E-FN-pO5"/>
                             <constraint firstItem="U28-gk-Q3v" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="4:3" id="25t-ta-ogQ"/>
+                            <constraint firstItem="qfp-9M-pMa" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="3MZ-kB-nof"/>
                             <constraint firstItem="Ymm-8J-RDN" firstAttribute="top" secondItem="tJY-cq-yGy" secondAttribute="bottom" constant="10" id="5sU-fC-KL2"/>
                             <constraint firstItem="qTE-Bj-zYs" firstAttribute="top" secondItem="Ymm-8J-RDN" secondAttribute="bottom" constant="30" id="6q0-JF-BqZ"/>
                             <constraint firstItem="xYQ-o3-abk" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="2:15" id="6rj-SX-hUd"/>
@@ -107,12 +114,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qTE-Bj-zYs" secondAttribute="trailing" constant="50" id="F7V-Im-fm0"/>
                             <constraint firstItem="Cwx-dB-PdV" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.309179" priority="500" id="H1z-Lu-3Th"/>
                             <constraint firstItem="Lww-BV-2UN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HMn-Sx-c7i"/>
+                            <constraint firstItem="qfp-9M-pMa" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.8" id="LKh-9P-9rS"/>
                             <constraint firstItem="xYQ-o3-abk" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="R7H-re-d06"/>
                             <constraint firstItem="U28-gk-Q3v" firstAttribute="leading" secondItem="qTE-Bj-zYs" secondAttribute="leading" id="Rb1-Sd-2AZ"/>
                             <constraint firstItem="Cwx-dB-PdV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="500" constant="50" id="S3M-en-PV3"/>
                             <constraint firstItem="u1c-id-e5d" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UTU-Xl-8xs"/>
                             <constraint firstItem="u1c-id-e5d" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Vec-ck-OeO"/>
+                            <constraint firstItem="qfp-9M-pMa" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="1:4" id="ZdS-To-1hH"/>
                             <constraint firstItem="Ymm-8J-RDN" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="4:5" id="bW6-eT-iA5"/>
+                            <constraint firstItem="qfp-9M-pMa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="eiH-bA-zg9"/>
                             <constraint firstItem="xIg-6R-Xn8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Cwx-dB-PdV" secondAttribute="trailing" constant="8" symbolic="YES" id="fdi-Ix-fX3"/>
                             <constraint firstItem="U28-gk-Q3v" firstAttribute="height" secondItem="qTE-Bj-zYs" secondAttribute="height" id="g1L-nt-zmK"/>
                             <constraint firstItem="tJY-cq-yGy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xIg-6R-Xn8" secondAttribute="bottom" priority="750" constant="5" id="gzO-1s-Upq"/>
@@ -137,6 +147,7 @@
                         <outlet property="isCorrectImageView" destination="Lww-BV-2UN" id="cKH-ce-2GO"/>
                         <outlet property="noButton" destination="cUN-3R-k7m" id="LVK-kV-9hI"/>
                         <outlet property="pauseButton" destination="Cwx-dB-PdV" id="Xyw-Bq-brR"/>
+                        <outlet property="pauseLabel" destination="qfp-9M-pMa" id="0kB-6v-sVa"/>
                         <outlet property="scoreLabel" destination="xIg-6R-Xn8" id="yzx-lU-ZLT"/>
                         <outlet property="timeLabel" destination="tJY-cq-yGy" id="bNl-bz-rk3"/>
                         <outlet property="topCardView" destination="qTE-Bj-zYs" id="Mg0-RR-QdN"/>
