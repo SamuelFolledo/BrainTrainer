@@ -43,6 +43,19 @@ class MenuVC: UIViewController {
         easyButton.isDifficultyButton()
         mediumButton.isDifficultyButton()
         hardButton.isDifficultyButton()
+        setupLogoImageView()
+    }
+    
+    private func setupLogoImageView() {
+        UIView.animate(withDuration: 1, animations: {
+//            self.logoImageView.backgroundColor = .brown
+            self.logoImageView.frame.size.width += 10
+            self.logoImageView.frame.size.height += 10
+        }) { _ in
+            UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: { //makes a repeating animation that goes back and forth
+                self.logoImageView.frame.origin.y -= 20
+            })
+        }
     }
     
     private func updateHighScoreLabels() {
