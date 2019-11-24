@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="BrainTrainer" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundView" destination="4iq-ti-zRI" id="nBu-eP-UwR"/>
                 <outlet property="colorLabel" destination="bXJ-UX-HZ0" id="sWp-33-mYp"/>
             </connections>
         </placeholder>
@@ -17,6 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="467" height="173"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iq-ti-zRI">
+                    <rect key="frame" x="0.0" y="0.0" width="467" height="173"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="colorLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="60" translatesAutoresizingMaskIntoConstraints="NO" id="bXJ-UX-HZ0">
                     <rect key="frame" x="0.0" y="-5" width="467" height="173"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="75"/>
@@ -31,6 +36,10 @@
                 <constraint firstItem="bXJ-UX-HZ0" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="6hp-KG-VxM"/>
                 <constraint firstItem="bXJ-UX-HZ0" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="DMn-dV-Ioo"/>
                 <constraint firstItem="bXJ-UX-HZ0" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="HYb-tc-D2s"/>
+                <constraint firstItem="4iq-ti-zRI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Nzu-4b-yeN"/>
+                <constraint firstItem="4iq-ti-zRI" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Pms-Mu-M8e"/>
+                <constraint firstItem="4iq-ti-zRI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dby-HB-BpU"/>
+                <constraint firstItem="4iq-ti-zRI" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="my0-Qa-nEu"/>
                 <constraint firstItem="bXJ-UX-HZ0" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-10" id="su7-2c-7m3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
