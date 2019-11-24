@@ -126,6 +126,7 @@ class GameVC: UIViewController {
         case .none:
             break
         }
+        pauseButton.applyShadow()
         timerCounter = maxTime
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
