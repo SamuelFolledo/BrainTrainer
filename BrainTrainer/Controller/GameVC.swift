@@ -92,7 +92,7 @@ class GameVC: UIViewController {
         case .medium:
             maxTime = 3
         case .hard:
-            maxTime = 3
+            maxTime = 2
         case .none:
             break
         }
