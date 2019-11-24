@@ -18,7 +18,7 @@ enum GameDifficulty {
 
 class GameVC: UIViewController {
 //MARK: Properties
-    var gameState: GameState = .playing {
+    var gameState: GameState! {
         didSet {
             switch gameState {
             case .title:
@@ -29,6 +29,8 @@ class GameVC: UIViewController {
                 pauseGame()
             case .gameOver:
                 gameOver()
+            case .none:
+                break
             }
         }
     }
@@ -53,7 +55,7 @@ class GameVC: UIViewController {
             timeLabel.text = "\(String(format: "%.1f", timerCounter))" //round up to 1 decimal place
             if timerCounter <= 0 {
                 timer?.invalidate()
-                gameOver()
+                gameState = .gameOver
             }
         }
     }
@@ -146,10 +148,10 @@ class GameVC: UIViewController {
     
     private func setupViews() {
         pauseButton.applyShadow()
-        timerCounter = maxTime
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-        startTimer()
+        timerCounter = maxTime
+        gameState = .playing
     }
     
     private func startTimer() {
@@ -166,12 +168,20 @@ class GameVC: UIViewController {
     private func pauseGame() {
         pauseButton.setImage(kPLAYIMAGE, for: .normal)
         timer.invalidate() //pause the timer
+        topCardView.fadeOut(duration: 0.3)
+        bottomCardView.fadeOut(duration: 0.3)
+        yesButton.fadeOut(duration: 0.3)
+        noButton.fadeOut(duration: 0.3)
         yesButton.isEnabled = false
         noButton.isEnabled = false
     }
     
     private func playGame() {
         pauseButton.setImage(kPAUSEIMAGE, for: .normal)
+        topCardView.fadeIn(duration: 0.3)
+        bottomCardView.fadeIn(duration: 0.3)
+        yesButton.fadeIn(duration: 0.3)
+        noButton.fadeIn(duration: 0.3)
         yesButton.isEnabled = true
         noButton.isEnabled = true
         startTimer()
