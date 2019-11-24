@@ -19,12 +19,17 @@ enum GameDifficulty {
 class GameVC: UIViewController {
 //MARK: Properties
     var gameState: GameState = .playing
-    var gameDifficulty: GameDifficulty!
-    var score: Int = 0 {
+    var gameDifficulty: GameDifficulty! {
         didSet {
-            scoreLabel.text = "Score: \(score)"
-            if score % 3 == 0 && maxTime > 1 { //everytime user scores 3 points, reduce the time. maxTime will not go lower than 1 seconds
-                maxTime -= 0.1
+            switch gameDifficulty {
+            case .easy:
+                maxTime = 5
+            case .medium:
+                maxTime = 3
+            case .hard:
+                maxTime = 3
+            case .none:
+                break
             }
         }
     }
@@ -36,6 +41,44 @@ class GameVC: UIViewController {
             if timerCounter <= 0 {
                 timer?.invalidate()
                 gameOver()
+            }
+        }
+    }
+    var currentHighScore: Int! {
+        didSet {
+            switch gameDifficulty {
+            case .easy:
+                UserDefaults.standard.set(self.currentHighScore, forKey: kEASYHIGHSCORE)
+            case .medium:
+                UserDefaults.standard.set(self.currentHighScore, forKey: kMEDIUMHIGHSCORE)
+            case .hard:
+                UserDefaults.standard.set(self.currentHighScore, forKey: kHARDHIGHSCORE)
+            case .none:
+                break
+            }
+            UserDefaults.standard.synchronize() //refresh UserDefaults
+        }
+    }
+    var highScore: Int! {
+        get {
+            switch gameDifficulty {
+            case .easy:
+                return UserDefaults.standard.integer(forKey: kEASYHIGHSCORE)
+            case .medium:
+                return UserDefaults.standard.integer(forKey: kMEDIUMHIGHSCORE)
+            case .hard:
+                return UserDefaults.standard.integer(forKey: kHARDHIGHSCORE)
+            case .none:
+                break
+            }
+            return 0
+        }
+    }
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+            if score % 3 == 0 && maxTime > 1 { //everytime user scores 3 points, reduce the time. maxTime will not go lower than 1 seconds
+                maxTime -= 0.1
             }
         }
     }
@@ -76,33 +119,10 @@ class GameVC: UIViewController {
     }
     
     private func gameOver() {
-        checkHighScore() {
-            self.dismiss(animated: true, completion: nil)
+        if score > highScore {
+            currentHighScore = score //score is now our new high score
         }
-    }
-    
-    private func checkHighScore(completion: @escaping () -> Void) {
-        switch gameDifficulty {
-        case .easy:
-            let highScore = UserDefaults.standard.integer(forKey: kEASYHIGHSCORE)
-            if self.score > highScore {
-                UserDefaults.standard.set(self.score, forKey: kEASYHIGHSCORE)
-            }
-        case .medium:
-            let highScore = UserDefaults.standard.integer(forKey: kMEDIUMHIGHSCORE)
-            if self.score > highScore {
-                UserDefaults.standard.set(self.score, forKey: kMEDIUMHIGHSCORE)
-            }
-        case .hard:
-            let highScore = UserDefaults.standard.integer(forKey: kHARDHIGHSCORE)
-            if self.score > highScore {
-               UserDefaults.standard.set(self.score, forKey: kHARDHIGHSCORE)
-            }
-        case .none:
-            break
-        }
-        UserDefaults.standard.synchronize() //set the high score
-        completion()
+        dismiss(animated: true, completion: nil)
     }
     
     private func showIsCorrectImageView(isCorrect: Bool) {
@@ -119,16 +139,6 @@ class GameVC: UIViewController {
     }
     
     private func setupViews() {
-        switch gameDifficulty {
-        case .easy:
-            maxTime = 5
-        case .medium:
-            maxTime = 3
-        case .hard:
-            maxTime = 3
-        case .none:
-            break
-        }
         pauseButton.applyShadow()
         timerCounter = maxTime
         isCorrectImageView.isHidden = true
