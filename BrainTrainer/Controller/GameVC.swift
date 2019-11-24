@@ -48,6 +48,7 @@ class GameVC: UIViewController {
             }
         }
     }
+    var isOpposite: Bool = false
     var maxTime: Double!
     var timer: Timer!
     var timerCounter: Double = 4 {
@@ -135,7 +136,7 @@ class GameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        updateCardColor()
+//        updateCardColor()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -157,8 +158,24 @@ class GameVC: UIViewController {
     }
     
     private func updateCardColor() {
+        isOpposite = Bool.random()
+        print(isOpposite)
+        if isOpposite { //black background
+//            topCardView.backgroundView.backgroundColor = .black
+//            topCardView.colorLabel.textColor = .white
+//            bottomCardView.backgroundView.backgroundColor = .black
+//            bottomCardView.colorLabel.textColor = .white
+            topCardView.changeToBlackBackground()
+            bottomCardView.changeToBlackBackground()
+        } else { //white background
+//            topCardView.backgroundView.backgroundColor = .white
+//            topCardView.colorLabel.textColor = .black
+//            bottomCardView.backgroundView.backgroundColor = .white
+//            bottomCardView.colorLabel.textColor = .black
+            topCardView.changeToWhiteBackground()
+            bottomCardView.changeToWhiteBackground()
+        }
         topCardView.text = Color()
-        topCardView.colorLabel.textColor = .black
         bottomCardView.text = Color()
         bottomCardView.color = Color()
     }
