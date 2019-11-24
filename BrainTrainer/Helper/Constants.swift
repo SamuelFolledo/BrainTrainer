@@ -11,7 +11,12 @@ import UIKit
 
 //segue identifiers
 let kTOGAMEVC: String = "toGameVC"
-let correctImage: UIImage = UIImage(named: "correct")!
-let wrongImage: UIImage = UIImage(named: "wrong")!
-let pauseImage: UIImage = UIImage(named: "pause")!
-let playImage: UIImage = UIImage(named: "play")!
+let kCORRECTIMAGE: UIImage = UIImage(named: "correct")!
+let kWRONGIMAGE: UIImage = UIImage(named: "wrong")!
+let kPAUSEIMAGE: UIImage = UIImage(named: "pause")!
+let kPLAYIMAGE: UIImage = UIImage(named: "play")!
+
+//highscores
+let kEASYHIGHSCORE: String = "easyHighscore"
+let kMEDIUMHIGHSCORE: String = "mediumHighscore"
+let kHARDHIGHSCORE: String = "hardHighscore"
