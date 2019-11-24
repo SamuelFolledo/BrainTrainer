@@ -9,6 +9,18 @@
 import UIKit
 
 extension UIView {
+    func applyUpAndDownAnimation() {
+        UIView.animate(withDuration: 1, animations: {
+//            self.backgroundColor = .brown
+            self.frame.size.width += 10
+            self.frame.size.height += 10
+        }) { _ in
+            UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: { //makes a repeating animation that goes back and forth
+                self.frame.origin.y -= 20
+            })
+        }
+    }
+    
     func applyShadow() {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 1
