@@ -14,19 +14,21 @@ class MenuVC: UIViewController {
 //MARK: IBOutlets
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var easyButton: UIButton!
-    
     @IBOutlet weak var easyScoreLabel: UILabel!
     @IBOutlet weak var mediumButton: UIButton!
-    
     @IBOutlet weak var mediumScoreLabel: UILabel!
     @IBOutlet weak var hardButton: UIButton!
-    
     @IBOutlet weak var hardScoreLabel: UILabel!
     
 //MARK: App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateHighScoreLabels()
     }
     
 //MARK: Segue
@@ -41,6 +43,12 @@ class MenuVC: UIViewController {
         easyButton.isDifficultyButton()
         mediumButton.isDifficultyButton()
         hardButton.isDifficultyButton()
+    }
+    
+    private func updateHighScoreLabels() {
+        easyScoreLabel.text = "Highscore: \(UserDefaults.standard.integer(forKey: kEASYHIGHSCORE))"
+        mediumScoreLabel.text = "Highscore: \(UserDefaults.standard.integer(forKey: kMEDIUMHIGHSCORE))"
+        hardScoreLabel.text = "Highscore: \(UserDefaults.standard.integer(forKey: kHARDHIGHSCORE))"
     }
     
 //MARK: IBActions
