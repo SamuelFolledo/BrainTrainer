@@ -216,7 +216,13 @@ class GameVC: UIViewController {
         bottomCardView.alpha = 0
         yesButton.alpha = 0
         noButton.alpha = 0
-        pauseLabel.text = "Ready?"
+        switch gameDifficulty {
+        case .medium, .hard:
+            pauseLabel.font = UIFont.init(name: "Chalkduster", size: 30) //resize
+            pauseLabel.text = "If the cards are black, choose the opposite answer"
+        default:
+            pauseLabel.text = "Ready?"
+        }
         titleTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTitleTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
     }
     
