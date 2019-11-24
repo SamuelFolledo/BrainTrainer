@@ -65,7 +65,7 @@ class GameVC: UIViewController {
             timeLabel.text = "\(String(titleTimerCounter))" //round up to 1 decimal place
             if titleTimerCounter == 1 {
                 pauseLabel.text = "Go!"
-            } else if titleTimerCounter <= 0 {
+            } else if titleTimerCounter < 1 {
                 titleTimer?.invalidate()
                 timerCounter = maxTime
                 gameState = .playing
