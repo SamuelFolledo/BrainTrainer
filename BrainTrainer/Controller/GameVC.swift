@@ -18,7 +18,26 @@ enum GameDifficulty {
 
 class GameVC: UIViewController {
 //MARK: Properties
-    var gameState: GameState = .playing
+    var gameState: GameState = .playing {
+        didSet {
+            switch gameState {
+            case .title:
+                print("Title")
+            case .playing:
+                pauseButton.setImage(kPAUSEIMAGE, for: .normal)
+                yesButton.isEnabled = true
+                noButton.isEnabled = true
+                startTimer()
+            case .paused:
+                pauseButton.setImage(kPLAYIMAGE, for: .normal)
+                timer.invalidate() //pause the timer
+                yesButton.isEnabled = false
+                noButton.isEnabled = false
+            case .gameOver:
+                print("game over")
+            }
+        }
+    }
     var gameDifficulty: GameDifficulty! {
         didSet {
             switch gameDifficulty {
@@ -125,7 +144,7 @@ class GameVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    private func showIsCorrectImageView(isCorrect: Bool) {
+    private func showIsCorrectImageView(isCorrect: Bool) { //the correct or wrong indicator
         isCorrectImageView.image = isCorrect ? kCORRECTIMAGE : kWRONGIMAGE
         isCorrectImageView.isHidden = false
         isCorrectImageView.enlargeThenShrinkAnimation()
@@ -143,7 +162,19 @@ class GameVC: UIViewController {
         timerCounter = maxTime
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+        startTimer()
+    }
+    
+    private func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateGameTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
+    }
+    
+    private func pauseAction() {
+        if pauseButton.image(for: .normal) == kPLAYIMAGE {
+            gameState = .playing
+        } else {
+            gameState = .paused
+        }
     }
     
 //MARK: IBActions
@@ -155,13 +186,7 @@ class GameVC: UIViewController {
         evaluateAnswer(isYes: false)
     }
     @IBAction func pauseButtonTapped(_ sender: Any) {
-        if pauseButton.image(for: .normal) == kPLAYIMAGE {
-            pauseButton.setImage(kPAUSEIMAGE, for: .normal)
-            gameState = .playing
-        } else {
-            pauseButton.setImage(kPLAYIMAGE, for: .normal)
-            gameState = .paused
-        }
+        pauseAction()
     }
     
 //MARK: Helper Methods
