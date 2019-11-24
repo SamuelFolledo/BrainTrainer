@@ -284,10 +284,10 @@
                         <outlet property="easyButton" destination="eg3-tJ-b2Q" id="sFS-Xf-LsV"/>
                         <outlet property="easyScoreLabel" destination="E5P-PP-wPq" id="jr2-0l-yg8"/>
                         <outlet property="hardButton" destination="Atx-wH-ASI" id="PV2-o6-XZG"/>
-                        <outlet property="hardScoreLabel" destination="yQk-4f-Ke4" id="37M-wK-Kyp"/>
+                        <outlet property="hardScoreLabel" destination="pnh-g1-8ys" id="2rD-Ln-Gtx"/>
                         <outlet property="logoImageView" destination="6jC-Kz-9t2" id="itz-pc-y2b"/>
                         <outlet property="mediumButton" destination="5LS-F5-pld" id="PWw-Ug-Wrh"/>
-                        <outlet property="mediumScoreLabel" destination="E5P-PP-wPq" id="HYz-sI-KO0"/>
+                        <outlet property="mediumScoreLabel" destination="yQk-4f-Ke4" id="8au-89-xHv"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="toGameVC" animates="NO" modalPresentationStyle="fullScreen" id="rq7-fN-cr6"/>
                     </connections>
                 </viewController>
