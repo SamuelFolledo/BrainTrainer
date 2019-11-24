@@ -20,7 +20,7 @@ class CardView: UIView {
             colorLabel.text = text.text
         }
     }
-    
+    @IBOutlet weak var backgroundView: UIView!
     
     @IBOutlet weak var colorLabel: UILabel!
     
@@ -44,7 +44,18 @@ class CardView: UIView {
         colorLabel.text = text.text
         colorLabel.textColor = color.textColor
         colorLabel.shadowColor = .none
+        self.isOpaque = false
         self.applyShadow()
+    }
+    
+    func changeToWhiteBackground() {
+        backgroundView.backgroundColor = .white
+        self.colorLabel.textColor = .black
+    }
+    
+    func changeToBlackBackground() {
+        backgroundView.backgroundColor = .black
+        self.colorLabel.textColor = .white
     }
 
     func initializeXibFile() {
