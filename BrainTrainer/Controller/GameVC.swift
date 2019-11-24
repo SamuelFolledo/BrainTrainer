@@ -24,17 +24,11 @@ class GameVC: UIViewController {
             case .title:
                 print("Title")
             case .playing:
-                pauseButton.setImage(kPAUSEIMAGE, for: .normal)
-                yesButton.isEnabled = true
-                noButton.isEnabled = true
-                startTimer()
+                playGame()
             case .paused:
-                pauseButton.setImage(kPLAYIMAGE, for: .normal)
-                timer.invalidate() //pause the timer
-                yesButton.isEnabled = false
-                noButton.isEnabled = false
+                pauseGame()
             case .gameOver:
-                print("game over")
+                gameOver()
             }
         }
     }
@@ -133,15 +127,8 @@ class GameVC: UIViewController {
         } else {
 //            score -= 1
             showIsCorrectImageView(isCorrect: false)
-            gameOver()
+            gameState = .gameOver
         }
-    }
-    
-    private func gameOver() {
-        if score > highScore {
-            currentHighScore = score //score is now our new high score
-        }
-        dismiss(animated: true, completion: nil)
     }
     
     private func showIsCorrectImageView(isCorrect: Bool) { //the correct or wrong indicator
@@ -169,24 +156,41 @@ class GameVC: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateGameTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
     }
     
-    private func pauseAction() {
-        if pauseButton.image(for: .normal) == kPLAYIMAGE {
-            gameState = .playing
-        } else {
-            gameState = .paused
+    private func gameOver() {
+        if score > highScore {
+            currentHighScore = score //score is now our new high score
         }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func pauseGame() {
+        pauseButton.setImage(kPLAYIMAGE, for: .normal)
+        timer.invalidate() //pause the timer
+        yesButton.isEnabled = false
+        noButton.isEnabled = false
+    }
+    
+    private func playGame() {
+        pauseButton.setImage(kPAUSEIMAGE, for: .normal)
+        yesButton.isEnabled = true
+        noButton.isEnabled = true
+        startTimer()
     }
     
 //MARK: IBActions
-    @IBAction func yesButtonTapped(_ sender: Any) {
+    @IBAction func yesButtonTapped(_ button: UIButton) {
         evaluateAnswer(isYes: true)
     }
     
-    @IBAction func noButtonTapped(_ sender: Any) {
+    @IBAction func noButtonTapped(_ button: UIButton) {
         evaluateAnswer(isYes: false)
     }
-    @IBAction func pauseButtonTapped(_ sender: Any) {
-        pauseAction()
+    @IBAction func pauseButtonTapped(_ button: UIButton) {
+        if button.image(for: .normal) == kPLAYIMAGE {
+            gameState = .playing //setting gameState will pause or play the game
+        } else {
+            gameState = .paused
+        }
     }
     
 //MARK: Helper Methods
