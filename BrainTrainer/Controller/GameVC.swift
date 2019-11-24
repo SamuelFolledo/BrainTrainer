@@ -22,7 +22,7 @@ class GameVC: UIViewController {
         didSet {
             switch gameState {
             case .title:
-                print("Title")
+                gameTitle()
             case .playing:
                 playGame()
             case .paused:
@@ -50,12 +50,25 @@ class GameVC: UIViewController {
     }
     var maxTime: Double!
     var timer: Timer!
-    var timerCounter: Double = 0 {
+    var timerCounter: Double = 4 {
         didSet {
             timeLabel.text = "\(String(format: "%.1f", timerCounter))" //round up to 1 decimal place
             if timerCounter <= 0 {
                 timer?.invalidate()
                 gameState = .gameOver
+            }
+        }
+    }
+    var titleTimer: Timer!
+    var titleTimerCounter: Int = 3 {
+        didSet {
+            timeLabel.text = "\(String(titleTimerCounter))" //round up to 1 decimal place
+            if titleTimerCounter == 1 {
+                pauseLabel.text = "Go!"
+            } else if titleTimerCounter <= 0 {
+                titleTimer?.invalidate()
+                timerCounter = maxTime
+                gameState = .playing
             }
         }
     }
@@ -97,11 +110,11 @@ class GameVC: UIViewController {
             }
         }
     }
-    var pauseCounter: Int! {
+    var pausesLeft: Int! {
         didSet {
-            pauseLabel.text = "\(String(pauseCounter))x pauses remaining"
+            pauseLabel.text = "\(String(pausesLeft))x pauses remaining"
             pauseLabel.fadeIn(duration: 0.5)
-            if pauseCounter < 1 {
+            if pausesLeft < 1 {
                 gameState = .gameOver
             }
         }
@@ -160,13 +173,12 @@ class GameVC: UIViewController {
         pauseButton.applyShadow()
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-        pauseCounter = 3
-        timerCounter = maxTime
-        gameState = .playing
+        pausesLeft = 4
+        gameState = .title
     }
     
     private func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateGameTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateGameTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
     }
     
     private func gameOver() {
@@ -174,6 +186,15 @@ class GameVC: UIViewController {
             currentHighScore = score //score is now our new high score
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func gameTitle() {
+        topCardView.alpha = 0
+        bottomCardView.alpha = 0
+        yesButton.alpha = 0
+        noButton.alpha = 0
+        pauseLabel.text = "Ready?"
+        titleTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTitleTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
     }
     
     private func pauseGame() {
@@ -185,7 +206,7 @@ class GameVC: UIViewController {
         noButton.fadeOut(duration: 0.3)
         yesButton.isEnabled = false
         noButton.isEnabled = false
-        pauseCounter -= 1
+        pausesLeft -= 1
     }
     
     private func playGame() {
@@ -218,6 +239,10 @@ class GameVC: UIViewController {
     
 //MARK: Helper Methods
     @objc func updateGameTimer() {
-        timerCounter -= 1
+        timerCounter -= 0.1
+    }
+    
+    @objc func updateTitleTimer() {
+        titleTimerCounter -= 1
     }
 }
