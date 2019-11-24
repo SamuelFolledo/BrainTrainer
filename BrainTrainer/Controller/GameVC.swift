@@ -158,22 +158,18 @@ class GameVC: UIViewController {
     }
     
     private func updateCardColor() {
-        isOpposite = Bool.random()
-        print(isOpposite)
-        if isOpposite { //black background
-//            topCardView.backgroundView.backgroundColor = .black
-//            topCardView.colorLabel.textColor = .white
-//            bottomCardView.backgroundView.backgroundColor = .black
-//            bottomCardView.colorLabel.textColor = .white
-            topCardView.changeToBlackBackground()
-            bottomCardView.changeToBlackBackground()
-        } else { //white background
-//            topCardView.backgroundView.backgroundColor = .white
-//            topCardView.colorLabel.textColor = .black
-//            bottomCardView.backgroundView.backgroundColor = .white
-//            bottomCardView.colorLabel.textColor = .black
-            topCardView.changeToWhiteBackground()
-            bottomCardView.changeToWhiteBackground()
+        switch gameDifficulty {
+        case .hard:
+            isOpposite = Bool.random()
+            if isOpposite { //black background
+                topCardView.changeToBlackBackground()
+                bottomCardView.changeToBlackBackground()
+            } else { //white background
+                topCardView.changeToWhiteBackground()
+                bottomCardView.changeToWhiteBackground()
+            }
+        default:
+            break
         }
         topCardView.text = Color()
         bottomCardView.text = Color()
