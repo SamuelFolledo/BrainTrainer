@@ -113,11 +113,17 @@ class GameVC: UIViewController {
     }
     var pausesLeft: Int! {
         didSet {
-            pauseLabel.text = "\(String(pausesLeft))x pauses remaining"
-            pauseLabel.fadeIn(duration: 0.5)
-            if pausesLeft < 1 {
+            switch pausesLeft { //different ways to compare switch values
+            case let num where num == 0:
+                pauseLabel.text = "Warning, this is your last pause"
+                pauseLabel.fadeIn(duration: 0.5)
+            case _ where pausesLeft < 0:
                 gameState = .gameOver
+            default:
+                pauseLabel.text = "\(String(pausesLeft))x pauses remaining"
+                pauseLabel.fadeIn(duration: 0.5)
             }
+
         }
     }
     
@@ -147,24 +153,22 @@ class GameVC: UIViewController {
         if !isOpposite { //isOpposite == false
             if (topCardView.text == bottomCardView.color && isYes) || (topCardView.text != bottomCardView.color && !isYes) {
                 score += 1
-                showIsCorrectImageView(isCorrect: true)
                 timerCounter = maxTime
+                showIsCorrectImageView(isCorrect: true)
                 updateCardColor()
-            } else {
-                showIsCorrectImageView(isCorrect: false)
-                gameState = .gameOver
+                return
             }
         } else { //isOpposite == true; if in medium or hard difficulty only
             if (topCardView.text == bottomCardView.color && !isYes) || (topCardView.text != bottomCardView.color && isYes) {
                 score += 1
-                showIsCorrectImageView(isCorrect: true)
                 timerCounter = maxTime
+                showIsCorrectImageView(isCorrect: true)
                 updateCardColor()
-            } else {
-                showIsCorrectImageView(isCorrect: false)
-                gameState = .gameOver
+                return
             }
         }
+        showIsCorrectImageView(isCorrect: false) //wrong
+        gameState = .gameOver
     }
     
     private func updateCardColor() {
@@ -193,7 +197,7 @@ class GameVC: UIViewController {
     }
     
     private func setupViews() {
-        pauseButton.applyShadow()
+        pauseButton.applyRoundShadow()
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
         pausesLeft = 4
