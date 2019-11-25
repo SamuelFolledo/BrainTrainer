@@ -48,7 +48,7 @@ class GameVC: UIViewController {
             }
         }
     }
-    var isOpposite: Bool = false
+    var isOpposite: Bool = false //only true when gameDifficulty is medium and hard and the card is black
     var maxTime: Double!
     var timer: Timer!
     var timerCounter: Double = 4 {
@@ -63,13 +63,16 @@ class GameVC: UIViewController {
     var titleTimer: Timer!
     var titleTimerCounter: Int = 3 {
         didSet {
-            timeLabel.text = "\(String(titleTimerCounter))" //round up to 1 decimal place
-            if titleTimerCounter == 1 {
+            switch titleTimerCounter {
+            case 1:
                 pauseLabel.text = "Go!"
-            } else if titleTimerCounter < 1 { //start titleTimer and start playing
+            case 0:
                 titleTimer?.invalidate()
                 timerCounter = maxTime
+                pauseButton.alpha = 1
                 gameState = .playing
+            default:
+                timeLabel.text = "\(String(titleTimerCounter))" //round up to 1 decimal place
             }
         }
     }
@@ -106,7 +109,7 @@ class GameVC: UIViewController {
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
-            if score % 3 == 0 && maxTime > 1 { //everytime user scores 3 points, reduce the time. maxTime will not go lower than 1 seconds
+            if score % 3 == 0 && maxTime > 1 { //everytime user scores 3 points, reduce the time. But maxTime will not go lower than 1 seconds
                 maxTime -= 0.1
             }
         }
@@ -142,10 +145,6 @@ class GameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        timer?.invalidate()
     }
     
 //MARK: Private Methods
@@ -197,7 +196,7 @@ class GameVC: UIViewController {
     }
     
     private func setupViews() {
-        pauseButton.applyRoundShadow()
+        pauseButton.isHidden = true
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
         pausesLeft = 4
@@ -212,6 +211,7 @@ class GameVC: UIViewController {
         if score > highScore {
             currentHighScore = score //score is now our new high score
         }
+        timer.invalidate()
         dismiss(animated: true, completion: nil)
     }
     
