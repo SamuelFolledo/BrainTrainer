@@ -65,7 +65,9 @@ class GameVC: UIViewController {
         didSet {
             switch titleTimerCounter {
             case 1:
-                pauseLabel.text = "Go!"
+                if gameDifficulty == .easy { //only say Go! if it's easy mode to avoid removing the instructions
+                    pauseLabel.text = "Go!"
+                }
             case 0:
                 titleTimer?.invalidate()
                 timerCounter = maxTime
