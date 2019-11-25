@@ -36,8 +36,22 @@ extension UIView {
     func applyShadow() {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 1
-        self.layer.shadowOffset = .zero
+//        self.layer.shadowOffset = .zero
+        self.layer.shadowOffset.height = self.frame.height / 8 //+ will go down, - will go up
+        self.layer.shadowOffset.width = self.frame.width / 8 //+ go right, - will go left
         self.layer.shadowRadius = 10
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    func applyRoundShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 1
+//        self.layer.shadowOffset = .zero
+        self.layer.shadowOffset.height = self.frame.height / 10 //+ will put the shadow down, negative will put the shadow up
+        self.layer.shadowOffset.width = self.frame.width / 10 //+ will make it more right, negative will put it more left
+        self.layer.shadowRadius = self.frame.height / 3
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
