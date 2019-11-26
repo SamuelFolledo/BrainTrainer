@@ -48,14 +48,14 @@ class CardView: UIView {
         self.applyShadow()
     }
     
-    func changeToWhiteBackground() {
-        backgroundView.backgroundColor = .white
-        self.colorLabel.textColor = .black
-    }
-    
-    func changeToBlackBackground() {
-        backgroundView.backgroundColor = .black
-        self.colorLabel.textColor = .white
+    func addMediumDifficulty(isBlack: Bool) {
+        if isBlack { //if random boolean is true...
+            backgroundView.backgroundColor = .black
+            colorLabel.textColor = .white
+        } else {
+            backgroundView.backgroundColor = .white
+            colorLabel.textColor = .black
+        }
     }
 
     func initializeXibFile() {
