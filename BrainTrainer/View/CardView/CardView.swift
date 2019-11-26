@@ -14,17 +14,32 @@ class CardView: UIView {
             colorLabel.textColor = color.textColor
         }
     }
-    
     var text: Color {
         didSet {
             colorLabel.text = text.text
         }
     }
+    var cardColor: CardColor {
+        didSet {
+            backgroundView.backgroundColor = cardColor.color
+            switch cardColor {
+            case .white, .green, .red:
+                while colorLabel.textColor == cardColor.color { //Error check: we dont want the colorLabel's textColor to be the same as the background, so we will update color to a new Color which will update the colorLabel's textColor
+                    color = Color()
+                }
+            case .black:
+                if colorLabel.textColor == cardColor.color { //we need this check because we do not want to change bottom card's textColor to be white
+                    colorLabel.textColor = .white
+                }
+            }
+        }
+    }
+//MARK: IBOutlets
     @IBOutlet weak var backgroundView: UIView!
-    
     @IBOutlet weak var colorLabel: UILabel!
     
     override init(frame: CGRect) { //for programmatically
+        cardColor = CardColor.white
         color = Color()
         text = Color()
         super.init(frame: frame)
@@ -33,6 +48,7 @@ class CardView: UIView {
     }
 
     required init?(coder aDecoder: NSCoder) {
+        cardColor = CardColor.white
         color = Color()
         text = Color()
         super.init(coder: aDecoder)
@@ -41,18 +57,19 @@ class CardView: UIView {
     }
     
     func setupView() {
+        backgroundView.backgroundColor = cardColor.color
         colorLabel.text = text.text
         colorLabel.textColor = color.textColor
-        colorLabel.shadowColor = .none
         self.isOpaque = false
         self.applyShadow()
     }
     
     func addBlackBackground() {
-        backgroundView.backgroundColor = .black
-        if colorLabel.textColor == .black { //we need this check because we do not want to change bottom card's textColor to be white
-            colorLabel.textColor = .white
-        }
+        cardColor = .black
+//        backgroundView.backgroundColor = .black
+//        if colorLabel.textColor == .black { //we need this check because we do not want to change bottom card's textColor to be white
+//            colorLabel.textColor = .white
+//        }
     }
     
     func addRedBackground() {
