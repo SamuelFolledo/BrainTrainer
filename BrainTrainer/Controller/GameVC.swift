@@ -65,6 +65,7 @@ class GameVC: UIViewController {
         didSet {
             switch titleTimerCounter {
             case _ where titleTimerCounter == 1 && gameDifficulty == .easy: //if timer is 1 and difficulty is easy
+                timeLabel.text = "\(String(titleTimerCounter))"
                 pauseLabel.text = "Go!"
             case 0:
                 titleTimer?.invalidate()
@@ -118,7 +119,7 @@ class GameVC: UIViewController {
         didSet {
             switch pausesLeft { //different ways to compare switch values
             case let num where num == 0:
-                pauseLabel.text = "Warning, this is your last pause"
+                pauseLabel.text = "Warning! This is your last pause"
                 pauseLabel.fadeIn(duration: 0.5)
             case _ where pausesLeft < 0:
                 gameState = .gameOver
@@ -171,22 +172,18 @@ class GameVC: UIViewController {
     }
     
     private func updateCardColor() {
+        topCardView.text = Color()
+        topCardView.colorLabel.textColor = .black
+        bottomCardView.text = Color()
+        bottomCardView.color = Color()
         switch gameDifficulty {
         case .medium, .hard: //isOpposite can only be true if we are in hard mode
             isOpposite = Bool.random()
-            if isOpposite { //black background
-                topCardView.changeToBlackBackground()
-                bottomCardView.changeToBlackBackground()
-            } else { //white background
-                topCardView.changeToWhiteBackground()
-                bottomCardView.changeToWhiteBackground()
-            }
+            topCardView.addMediumDifficulty(isBlack: isOpposite)
+            bottomCardView.addMediumDifficulty(isBlack: isOpposite)
         default:
             break
         }
-        topCardView.text = Color()
-        bottomCardView.text = Color()
-        bottomCardView.color = Color()
     }
     
     private func showIsCorrectImageView(isCorrect: Bool) { //the correct or wrong indicator
@@ -196,10 +193,10 @@ class GameVC: UIViewController {
     }
     
     private func setupViews() {
-        pauseButton.isHidden = true
+        pauseButton.alpha = 0
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-        pausesLeft = 4
+        pausesLeft = 3
         gameState = .title
     }
     
