@@ -48,13 +48,17 @@ class CardView: UIView {
         self.applyShadow()
     }
     
-    func addMediumDifficulty(isBlack: Bool) {
-        if isBlack { //if random boolean is true...
-            backgroundView.backgroundColor = .black
+    func addBlackBackground() {
+        backgroundView.backgroundColor = .black
+        if colorLabel.textColor == .black { //we need this check because we do not want to change bottom card's textColor to be white
             colorLabel.textColor = .white
-        } else {
-            backgroundView.backgroundColor = .white
-            colorLabel.textColor = .black
+        }
+    }
+    
+    func addRedBackground() {
+        backgroundView.backgroundColor = .red
+        while colorLabel.textColor == .red { //Error check: we dont want the colorLabel's textColor to be red like the background, so we will update color to a new Color which will update the colorLabel's textColor
+            color = Color()
         }
     }
 
