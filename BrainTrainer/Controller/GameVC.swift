@@ -48,8 +48,10 @@ class GameVC: UIViewController {
             }
         }
     }
-    var isBlackCard: Bool = false //only true when gameDifficulty is medium and hard and the card is black
-    var isRedCard: Bool = false //only true at hard difficulty
+    var isBlackCard: Bool = false //can only be true when gameDifficulty is medium and hard and the card is black
+    var isRedCard: Bool = false //can only be true at hard difficulty
+    var isGreenCard: Bool = false //can only be true at hard difficulty
+    var cardBackgroundColor:(white:Bool, black:Bool, green:Bool, red:Bool) = (true, false, false, false)
     var maxTime: Double!
     var timer: Timer!
     var timerCounter: Double = 4 {
@@ -151,20 +153,24 @@ class GameVC: UIViewController {
     
 //MARK: Private Methods
     private func evaluateAnswer(isYes: Bool) {
-        if !isBlackCard { //isBlackCard == false
+        if !isBlackCard && !isRedCard { //white card - normal answer
             if (topCardView.text == bottomCardView.color && isYes) || (topCardView.text != bottomCardView.color && !isYes) {
-                score += 1
-                timerCounter = maxTime
-                showIsCorrectImageView(isCorrect: true)
-                updateCardColor()
+                correctAnswer()
                 return
             }
-        } else { //isBlackCard == true; if in medium or hard difficulty only
+        } else if isBlackCard { //if black card - reverse answer
             if (topCardView.text == bottomCardView.color && !isYes) || (topCardView.text != bottomCardView.color && isYes) {
-                score += 1
-                timerCounter = maxTime
-                showIsCorrectImageView(isCorrect: true)
-                updateCardColor()
+                correctAnswer()
+                return
+            }
+        } else if isRedCard { //if red card - do not answer
+            if !isYes { //if red card - say no
+                correctAnswer()
+                return
+            }
+        } else if isGreenCard {
+            if isYes {
+                correctAnswer()
                 return
             }
         }
@@ -219,6 +225,13 @@ class GameVC: UIViewController {
     
     private func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateGameTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
+    }
+    
+    private func correctAnswer() {
+        score += 1
+        timerCounter = maxTime
+        showIsCorrectImageView(isCorrect: true)
+        updateCardColor()
     }
     
     private func gameOver() {
