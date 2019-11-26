@@ -83,7 +83,6 @@ class GameVC: UIViewController {
     
 //MARK: Private Methods
     private func evaluateAnswer(userSelectedYes: Bool) {
-        print("User answered \(userSelectedYes ? "Yes" : "No") to \(cardColorAsTuple)")
         switch cardColorAsTuple {
         case (white:true, black:false, green:false, red:false): //WHITE
             if (topCardView.text == bottomCardView.color && userSelectedYes) || (topCardView.text != bottomCardView.color && !userSelectedYes) { //if text and color are the equal and user said yes OR if text and color are not equal and user said no
@@ -166,7 +165,9 @@ class GameVC: UIViewController {
             gameDifficulty.setHighScore(score: score) //score is now our new high score
         }
         timer.invalidate()
-        dismiss(animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { //add a 1 sec delay before dismissing
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     private func pauseGame() {
