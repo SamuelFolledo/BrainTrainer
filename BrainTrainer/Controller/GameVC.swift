@@ -152,24 +152,24 @@ class GameVC: UIViewController {
     }
     
 //MARK: Private Methods
-    private func evaluateAnswer(isYes: Bool) {
-        if !isBlackCard && !isRedCard { //white card - normal answer
-            if (topCardView.text == bottomCardView.color && isYes) || (topCardView.text != bottomCardView.color && !isYes) {
+    private func evaluateAnswer(userSelectedYes: Bool) {
+        if !isBlackCard && !isRedCard && !isGreenCard { //white card - normal answer
+            if (topCardView.text == bottomCardView.color && userSelectedYes) || (topCardView.text != bottomCardView.color && !userSelectedYes) {
                 correctAnswer()
                 return
             }
         } else if isBlackCard { //if black card - reverse answer
-            if (topCardView.text == bottomCardView.color && !isYes) || (topCardView.text != bottomCardView.color && isYes) {
+            if (topCardView.text == bottomCardView.color && !userSelectedYes) || (topCardView.text != bottomCardView.color && userSelectedYes) {
                 correctAnswer()
                 return
             }
         } else if isRedCard { //if red card - do not answer
-            if !isYes { //if red card - say no
+            if !userSelectedYes { //if red card - say no
                 correctAnswer()
                 return
             }
         } else if isGreenCard {
-            if isYes {
+            if userSelectedYes {
                 correctAnswer()
                 return
             }
@@ -181,6 +181,7 @@ class GameVC: UIViewController {
     private func updateCardColor() {
         isBlackCard = false //RESET and go to default view of the card first
         isRedCard = false
+        isGreenCard = false
         topCardView.backgroundView.backgroundColor = .white
         bottomCardView.backgroundView.backgroundColor = .white
         topCardView.text = Color() //SET new colors
@@ -198,10 +199,16 @@ class GameVC: UIViewController {
                 topCardView.addBlackBackground()
                 bottomCardView.addBlackBackground()
             } else { //if black = false, then let's give a chance for the card to be red
-                isRedCard = Bool.random()
-                if isRedCard { //if red = true then apply the red bg
-                    topCardView.addRedBackground()
-                    bottomCardView.addRedBackground()
+                isGreenCard = Bool.random()
+                if isGreenCard {
+                    topCardView.addGreenBackground()
+                    bottomCardView.addGreenBackground()
+                } else {
+                    isRedCard = Bool.random()
+                    if isRedCard { //if red = true then apply the red bg
+                        topCardView.addRedBackground()
+                        bottomCardView.addRedBackground()
+                    }
                 }
             }
         default: //else keep it the way it is
@@ -283,11 +290,11 @@ class GameVC: UIViewController {
     
 //MARK: IBActions
     @IBAction func yesButtonTapped(_ button: UIButton) {
-        evaluateAnswer(isYes: true)
+        evaluateAnswer(userSelectedYes: true)
     }
     
     @IBAction func noButtonTapped(_ button: UIButton) {
-        evaluateAnswer(isYes: false)
+        evaluateAnswer(userSelectedYes: false)
     }
     @IBAction func pauseButtonTapped(_ button: UIButton) {
         if button.image(for: .normal) == kPLAYIMAGE {
