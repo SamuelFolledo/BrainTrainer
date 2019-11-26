@@ -48,7 +48,8 @@ class GameVC: UIViewController {
             }
         }
     }
-    var isOpposite: Bool = false //only true when gameDifficulty is medium and hard and the card is black
+    var isBlackCard: Bool = false //only true when gameDifficulty is medium and hard and the card is black
+    var isRedCard: Bool = false //only true at hard difficulty
     var maxTime: Double!
     var timer: Timer!
     var timerCounter: Double = 4 {
@@ -150,7 +151,7 @@ class GameVC: UIViewController {
     
 //MARK: Private Methods
     private func evaluateAnswer(isYes: Bool) {
-        if !isOpposite { //isOpposite == false
+        if !isBlackCard { //isBlackCard == false
             if (topCardView.text == bottomCardView.color && isYes) || (topCardView.text != bottomCardView.color && !isYes) {
                 score += 1
                 timerCounter = maxTime
@@ -158,7 +159,7 @@ class GameVC: UIViewController {
                 updateCardColor()
                 return
             }
-        } else { //isOpposite == true; if in medium or hard difficulty only
+        } else { //isBlackCard == true; if in medium or hard difficulty only
             if (topCardView.text == bottomCardView.color && !isYes) || (topCardView.text != bottomCardView.color && isYes) {
                 score += 1
                 timerCounter = maxTime
@@ -172,16 +173,32 @@ class GameVC: UIViewController {
     }
     
     private func updateCardColor() {
-        topCardView.text = Color()
-        topCardView.colorLabel.textColor = .black
-        bottomCardView.text = Color()
-        bottomCardView.color = Color()
-        switch gameDifficulty {
-        case .medium, .hard: //isOpposite can only be true if we are in hard mode
-            isOpposite = Bool.random()
-            topCardView.addMediumDifficulty(isBlack: isOpposite)
-            bottomCardView.addMediumDifficulty(isBlack: isOpposite)
-        default:
+        isBlackCard = false //RESET and go to default view of the card first
+        isRedCard = false
+        topCardView.backgroundView.backgroundColor = .white
+        bottomCardView.backgroundView.backgroundColor = .white
+        topCardView.text = Color() //SET new colors
+        topCardView.colorLabel.textColor = .black //keep this guy black
+        bottomCardView.text = Color() //setting text to a new Color will update the card's text
+        bottomCardView.color = Color() //setting color to a new Color will update the card's textColor
+        switch gameDifficulty { //add the random background depending on difficulty
+        case .medium: //isBlackCard can only be true if we are in hard mode
+            isBlackCard = Bool.random()
+            topCardView.addBlackBackground()
+            bottomCardView.addBlackBackground()
+        case .hard:
+            isBlackCard = Bool.random()
+            if isBlackCard { //if black = true
+                topCardView.addBlackBackground()
+                bottomCardView.addBlackBackground()
+            } else { //if black = false, then let's give a chance for the card to be red
+                isRedCard = Bool.random()
+                if isRedCard { //if red = true then apply the red bg
+                    topCardView.addRedBackground()
+                    bottomCardView.addRedBackground()
+                }
+            }
+        default: //else keep it the way it is
             break
         }
     }
