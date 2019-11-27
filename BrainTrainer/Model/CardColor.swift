@@ -25,8 +25,7 @@ enum CardColor {
     }
     
     init() {
-        self = .white
-        self.getRandomColor()
+        self = CardColor.allCases[Int(arc4random_uniform(UInt32(CardColor.allCases.count)))]
     }
     
     func getCardColorAsTuple() -> (white:Bool, black:Bool, green:Bool, red:Bool) {
