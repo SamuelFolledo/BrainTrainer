@@ -82,6 +82,42 @@ class GameVC: UIViewController {
     }
     
 //MARK: Private Methods
+    private func setupViews() {
+        pauseButton.alpha = 0
+        isCorrectImageView.isHidden = true
+        isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+        pausesLeft = 3
+        maxTime = gameDifficulty.getInitialMaxTime()
+        timerCounter = maxTime
+        gameState = .playing
+    }
+    
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateGameTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
+    }
+    
+    private func updateCardColor() {
+        cardColorAsTuple = (white:true, black:false, green:false, red:false) //RESET as white being true
+        topCardView.text = Color() //SET a new random color
+        topCardView.colorLabel.textColor = .black //keep this black
+        bottomCardView.text = Color() //setting text to a new Color will update the card's text
+        bottomCardView.color = Color() //setting color to a new Color will update the card's textColor
+        var cardColor: CardColor = CardColor.white
+        switch gameDifficulty { //change background
+        case .medium: //make a black or white card
+            if Bool.random() { //if random Bool is true...
+                cardColor = CardColor.black //make the cardBG black
+            }
+        case .hard: //if hard...
+            cardColor = CardColor() //select random color
+        default: //else keep card as white
+            break
+        }
+        topCardView.cardColor = cardColor //assign cardColor
+        bottomCardView.cardColor = cardColor
+        cardColorAsTuple = cardColor.getCardColorAsTuple() //populate our cardColorAsTuple property to see which color is true
+    }
+    
     private func evaluateAnswer(userSelectedYes: Bool) {
         switch cardColorAsTuple {
         case (white:true, black:false, green:false, red:false): //WHITE
@@ -110,48 +146,6 @@ class GameVC: UIViewController {
         gameState = .gameOver
     }
     
-    private func updateCardColor() {
-        cardColorAsTuple = (white:true, black:false, green:false, red:false) //RESET as white being true
-        topCardView.text = Color() //SET a new random color
-        topCardView.colorLabel.textColor = .black //keep this black
-        bottomCardView.text = Color() //setting text to a new Color will update the card's text
-        bottomCardView.color = Color() //setting color to a new Color will update the card's textColor
-        var cardColor: CardColor = CardColor.white
-        switch gameDifficulty { //change background
-        case .medium: //make a black or white card
-            if Bool.random() { //if random Bool is true...
-                cardColor = CardColor.black //make the cardBG black
-            }
-        case .hard: //if hard...
-            cardColor = CardColor() //select random color
-        default: //else keep card as white
-            break
-        }
-        topCardView.cardColor = cardColor //assign cardColor
-        bottomCardView.cardColor = cardColor
-        cardColorAsTuple = cardColor.getCardColorAsTuple() //populate our cardColorAsTuple property to see which color is true
-    }
-    
-    private func showIsCorrectImageView(isCorrect: Bool) { //the correct or wrong indicator
-        isCorrectImageView.image = isCorrect ? kCORRECTIMAGE : kWRONGIMAGE
-        isCorrectImageView.isHidden = false
-        isCorrectImageView.enlargeThenShrinkAnimation()
-    }
-    
-    private func setupViews() {
-        pauseButton.alpha = 0
-        isCorrectImageView.isHidden = true
-        isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-        pausesLeft = 3
-        maxTime = gameDifficulty.getInitialMaxTime()
-        timerCounter = maxTime
-        gameState = .playing
-    }
-    
-    private func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateGameTimer), userInfo: nil, repeats: true) //Once the round is ready, start the timer
-    }
-    
     private func correctAnswer() {
         score += 1
         timerCounter = maxTime
@@ -159,17 +153,10 @@ class GameVC: UIViewController {
         updateCardColor()
     }
     
-    private func gameOver() {
-        timer.invalidate()
-        showIsCorrectImageView(isCorrect: false) //user answered wrong
-        yesButton.isEnabled = false
-        noButton.isEnabled = false
-        if score > gameDifficulty.getHighScore() {
-            gameDifficulty.setHighScore(score: score) //score is now our new high score
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { //add a 1 sec delay before dismissing
-            self.dismiss(animated: true, completion: nil)
-        }
+    private func showIsCorrectImageView(isCorrect: Bool) { //the correct or wrong indicator
+        isCorrectImageView.image = isCorrect ? kCORRECTIMAGE : kWRONGIMAGE
+        isCorrectImageView.isHidden = false
+        isCorrectImageView.enlargeThenShrinkAnimation()
     }
     
     private func pauseGame() {
@@ -195,6 +182,19 @@ class GameVC: UIViewController {
         pauseLabel.fadeOut(duration: 0.3)
         startTimer()
         updateCardColor()
+    }
+    
+    private func gameOver() {
+        timer.invalidate()
+        showIsCorrectImageView(isCorrect: false) //user answered wrong
+        yesButton.isEnabled = false
+        noButton.isEnabled = false
+        if score > gameDifficulty.getHighScore() {
+            gameDifficulty.setHighScore(score: score) //score is now our new high score
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { //add a 1 sec delay before dismissing
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
 //MARK: IBActions
