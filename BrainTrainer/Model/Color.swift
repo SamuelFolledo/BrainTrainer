@@ -50,15 +50,13 @@ enum Color {
     }
     
     init() {
-        self = .red
-        self.getRandomColor()
+        self = Color.allCases[Int(arc4random_uniform(UInt32(Color.allCases.count)))]
     }
 }
 
 extension Color: CaseIterable {
     mutating func getRandomColor() { //updates color to a random Color from all Color cases //CaseIterable allows me to use the allCases typeProperty
         self = Color.allCases[Int(arc4random_uniform(UInt32(Color.allCases.count)))]
-        
     }
 }
 
