@@ -36,7 +36,7 @@ class GameVC: UIViewController {
         didSet {
             timeLabel.text = "\(String(format: "%.1f", timerCounter))" //round up to 1 decimal place
             if timerCounter <= 0 {
-                timer?.invalidate()
+                timeLabel.text = "0.0"
                 gameState = .gameOver
             }
         }
@@ -107,7 +107,6 @@ class GameVC: UIViewController {
         default:
             print("weird card \(cardColorAsTuple)")
         }
-        showIsCorrectImageView(isCorrect: false) //wrong
         gameState = .gameOver
     }
     
@@ -161,10 +160,13 @@ class GameVC: UIViewController {
     }
     
     private func gameOver() {
+        timer.invalidate()
+        showIsCorrectImageView(isCorrect: false) //user answered wrong
+        yesButton.isEnabled = false
+        noButton.isEnabled = false
         if score > gameDifficulty.getHighScore() {
             gameDifficulty.setHighScore(score: score) //score is now our new high score
         }
-        timer.invalidate()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { //add a 1 sec delay before dismissing
             self.dismiss(animated: true, completion: nil)
         }
