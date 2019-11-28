@@ -44,6 +44,7 @@ class MenuVC: UIViewController {
     
 //MARK: Private Methods
     private func setupViews() {
+        tutorial_leftCache = tutorial_left.constant //cache our left constraint
         easyButton.isMenuButton()
         mediumButton.isMenuButton()
         hardButton.isMenuButton()
@@ -76,15 +77,24 @@ class MenuVC: UIViewController {
     
 //MARK: Helpers
     func showTutorialView() {
+        tutorialView.backButton.addTarget(self, action: #selector(hideTutorialView), for: .touchUpInside)
         let width = self.view.frame.width
         tutorial_left.constant -= (width - (width / 9)) //subtracting will go left //divided by 9 because its width is safeArea's width / 8
         UIView.animate(withDuration: 0.5) {
-            self.updateDifficultyViews(toHide: true)
+            self.configureDifficultyViews(toHide: true)
             self.view.layoutIfNeeded() //Lays out the subviews immediately, if layout updates are pending.
         }
     }
     
-    func updateDifficultyViews(toHide: Bool) {
+    @objc func hideTutorialView() { //so we can addTarget to a view's button
+        tutorial_left.constant = tutorial_leftCache //subtracting will go left //divided by 9 because its width is safeArea's width / 8
+        UIView.animate(withDuration: 0.5) {
+            self.configureDifficultyViews(toHide: false)
+            self.view.layoutIfNeeded() //Lays out the subviews immediately, if layout updates are pending.
+        }
+    }
+    
+    func configureDifficultyViews(toHide: Bool) {
         if toHide { //will hide
             selectDifficultyLabel.alpha = 0
             easyButton.alpha = 0
