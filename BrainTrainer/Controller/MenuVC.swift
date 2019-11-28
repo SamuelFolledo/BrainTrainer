@@ -29,8 +29,8 @@ class MenuVC: UIViewController {
         setupViews()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateHighScoreLabels()
         setupLogoImageView()
     }
@@ -44,10 +44,12 @@ class MenuVC: UIViewController {
     
 //MARK: Private Methods
     private func setupViews() {
-        tutorial_leftCache = tutorial_left.constant //cache our left constraint
         easyButton.isMenuButton()
         mediumButton.isMenuButton()
         hardButton.isMenuButton()
+        tutorial_leftCache = tutorial_left.constant //cache our left constraint
+        tutorialView.startButton.addTarget(self, action: #selector(startGame), for: .touchUpInside) //add start method to start button
+        tutorialView.backButton.addTarget(self, action: #selector(hideTutorialView), for: .touchUpInside) //add back
     }
     
     private func setupLogoImageView() {
@@ -64,7 +66,6 @@ class MenuVC: UIViewController {
     @IBAction func easyButtonTapped(_ sender: Any) {
         tutorialView.gameDifficulty = .easy
         showTutorialView()
-//        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.easy)
     }
     
     @IBAction func mediumButtonTapped(_ sender: Any) {
@@ -77,7 +78,6 @@ class MenuVC: UIViewController {
     
 //MARK: Helpers
     func showTutorialView() {
-        tutorialView.backButton.addTarget(self, action: #selector(hideTutorialView), for: .touchUpInside)
         let width = self.view.frame.width
         tutorial_left.constant -= (width - (width / 9)) //subtracting will go left //divided by 9 because its width is safeArea's width / 8
         UIView.animate(withDuration: 0.5) {
@@ -92,6 +92,10 @@ class MenuVC: UIViewController {
             self.configureDifficultyViews(toHide: false)
             self.view.layoutIfNeeded() //Lays out the subviews immediately, if layout updates are pending.
         }
+    }
+    
+    @objc func startGame() { //so we can addTarget to a view's button
+        performSegue(withIdentifier: kTOGAMEVC, sender: tutorialView.gameDifficulty)
     }
     
     func configureDifficultyViews(toHide: Bool) {
