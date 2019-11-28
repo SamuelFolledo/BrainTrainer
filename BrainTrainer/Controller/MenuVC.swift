@@ -69,11 +69,13 @@ class MenuVC: UIViewController {
     }
     
     @IBAction func mediumButtonTapped(_ sender: Any) {
-//        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.medium)
+        tutorialView.gameDifficulty = .medium
+        showTutorialView()
     }
     
     @IBAction func hardButtonTapped(_ sender: Any) {
-//        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.hard)
+        tutorialView.gameDifficulty = .hard
+        showTutorialView()
     }
     
 //MARK: Helpers
