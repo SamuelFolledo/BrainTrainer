@@ -11,6 +11,7 @@ import UIKit
 class MenuVC: UIViewController {
 //MARK: Properties
     var tutorial_leftCache: CGFloat!
+    
 //MARK: IBOutlets
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var selectDifficultyLabel: UILabel!
@@ -23,7 +24,7 @@ class MenuVC: UIViewController {
     @IBOutlet weak var tutorialView: TutorialView!
     @IBOutlet weak var tutorial_left: NSLayoutConstraint!
     
-    //MARK: App LifeCycle
+//MARK: App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -79,7 +80,7 @@ class MenuVC: UIViewController {
     }
     
 //MARK: Helpers
-    func showTutorialView() {
+    private func showTutorialView() {
         let width = self.view.frame.width
         tutorial_left.constant -= (width - (width / 9)) //subtracting will go left //divided by 9 because its width is safeArea's width / 8
         UIView.animate(withDuration: 0.5) {
@@ -100,7 +101,7 @@ class MenuVC: UIViewController {
         performSegue(withIdentifier: kTOGAMEVC, sender: tutorialView.gameDifficulty)
     }
     
-    func configureDifficultyViews(toHide: Bool) {
+    private func configureDifficultyViews(toHide: Bool) {
         if toHide { //will hide
             selectDifficultyLabel.alpha = 0
             easyButton.alpha = 0
