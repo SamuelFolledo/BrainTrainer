@@ -10,17 +10,20 @@ import UIKit
 
 class MenuVC: UIViewController {
 //MARK: Properties
-    
+    var tutorial_leftCache: CGFloat!
 //MARK: IBOutlets
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var selectDifficultyLabel: UILabel!
     @IBOutlet weak var easyButton: UIButton!
     @IBOutlet weak var easyScoreLabel: UILabel!
     @IBOutlet weak var mediumButton: UIButton!
     @IBOutlet weak var mediumScoreLabel: UILabel!
     @IBOutlet weak var hardButton: UIButton!
     @IBOutlet weak var hardScoreLabel: UILabel!
+    @IBOutlet weak var tutorialView: TutorialView!
+    @IBOutlet weak var tutorial_left: NSLayoutConstraint!
     
-//MARK: App LifeCycle
+    //MARK: App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -58,17 +61,46 @@ class MenuVC: UIViewController {
     
 //MARK: IBActions
     @IBAction func easyButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.easy)
+        tutorialView.gameDifficulty = .easy
+        showTutorialView()
+//        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.easy)
     }
     
     @IBAction func mediumButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.medium)
+//        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.medium)
     }
     
     @IBAction func hardButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.hard)
+//        performSegue(withIdentifier: kTOGAMEVC, sender: GameDifficulty.hard)
     }
     
 //MARK: Helpers
+    func showTutorialView() {
+        let width = self.view.frame.width
+        tutorial_left.constant -= (width - (width / 9)) //subtracting will go left //divided by 9 because its width is safeArea's width / 8
+        UIView.animate(withDuration: 0.5) {
+            self.updateDifficultyViews(toHide: true)
+            self.view.layoutIfNeeded() //Lays out the subviews immediately, if layout updates are pending.
+        }
+    }
     
+    func updateDifficultyViews(toHide: Bool) {
+        if toHide { //will hide
+            selectDifficultyLabel.alpha = 0
+            easyButton.alpha = 0
+            easyScoreLabel.alpha = 0
+            mediumButton.alpha = 0
+            mediumScoreLabel.alpha = 0
+            hardButton.alpha = 0
+            hardScoreLabel.alpha = 0
+        } else {
+            selectDifficultyLabel.alpha = 1
+            easyButton.alpha = 1
+            easyScoreLabel.alpha = 1
+            mediumButton.alpha = 1
+            mediumScoreLabel.alpha = 1
+            hardButton.alpha = 1
+            hardScoreLabel.alpha = 1
+        }
+    }
 }
