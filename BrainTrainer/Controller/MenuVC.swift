@@ -36,6 +36,10 @@ class MenuVC: UIViewController {
         setupLogoImageView()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        hideTutorialView()
+    }
+    
 //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let difficulty: GameDifficulty = sender as? GameDifficulty else { return }
