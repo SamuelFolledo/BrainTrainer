@@ -172,6 +172,7 @@ class GameVC: UIViewController {
     }
     
     private func playGame() {
+        pauseButton.alpha = 1
         pauseButton.setImage(kPAUSEIMAGE, for: .normal)
         topCardView.fadeIn(duration: 0.3)
         bottomCardView.fadeIn(duration: 0.3)
