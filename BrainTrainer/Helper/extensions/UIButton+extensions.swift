@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIButton {
-    func isDifficultyButton() {
+    func isMenuButton() {
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.cornerRadius = self.frame.height / 5
