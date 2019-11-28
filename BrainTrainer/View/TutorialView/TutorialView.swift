@@ -12,10 +12,12 @@ class TutorialView: UIView {
     
     
 //MARK: IBOutlets
-    @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var easyInstructionLabel: UILabel!
     @IBOutlet weak var mediumInstructionLabel: UILabel!
     @IBOutlet weak var hardInstructionLabel: UILabel!
+    @IBOutlet weak var easyStackView: UIStackView!
+    @IBOutlet weak var mediumStackView: UIStackView!
+    @IBOutlet weak var hardStackView: UIStackView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
