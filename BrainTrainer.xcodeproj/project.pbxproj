@@ -25,6 +25,8 @@
 		33568634238A3BF00039987B /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33568633238A3BF00039987B /* UIView+extensions.swift */; };
 		33733B9A238CD6A20028C7B4 /* CardColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33733B99238CD6A20028C7B4 /* CardColor.swift */; };
 		33733B9C238CF3880028C7B4 /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33733B9B238CF3880028C7B4 /* GameDifficulty.swift */; };
+		33BE4A83239064010049E65B /* TutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33BE4A82239064010049E65B /* TutorialView.xib */; };
+		33BE4A85239064110049E65B /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE4A84239064110049E65B /* TutorialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		33568633238A3BF00039987B /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
 		33733B99238CD6A20028C7B4 /* CardColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColor.swift; sourceTree = "<group>"; };
 		33733B9B238CF3880028C7B4 /* GameDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
+		33BE4A82239064010049E65B /* TutorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialView.xib; sourceTree = "<group>"; };
+		33BE4A84239064110049E65B /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 		33040B412385DC0900AA98F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				33BE4A81239063E00049E65B /* TutorialView */,
 				33040B562385F9EF00AA98F8 /* CardView */,
 			);
 			path = View;
@@ -212,6 +217,15 @@
 				33040B572385FA0000AA98F8 /* CardView.xib */,
 			);
 			path = CardView;
+			sourceTree = "<group>";
+		};
+		33BE4A81239063E00049E65B /* TutorialView */ = {
+			isa = PBXGroup;
+			children = (
+				33BE4A84239064110049E65B /* TutorialView.swift */,
+				33BE4A82239064010049E65B /* TutorialView.xib */,
+			);
+			path = TutorialView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33BE4A83239064010049E65B /* TutorialView.xib in Resources */,
 				33040B1D2385D32D00AA98F8 /* LaunchScreen.storyboard in Resources */,
 				33040B1A2385D32D00AA98F8 /* Assets.xcassets in Resources */,
 				33040B582385FA0000AA98F8 /* CardView.xib in Resources */,
@@ -347,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33733B9A238CD6A20028C7B4 /* CardColor.swift in Sources */,
+				33BE4A85239064110049E65B /* TutorialView.swift in Sources */,
 				33040B5A2388EC9B00AA98F8 /* UIImageView+extensions.swift in Sources */,
 				33040B112385D32B00AA98F8 /* AppDelegate.swift in Sources */,
 				33040B482385DC7000AA98F8 /* Color.swift in Sources */,
