@@ -41,9 +41,9 @@ class MenuVC: UIViewController {
     
 //MARK: Private Methods
     private func setupViews() {
-        easyButton.isDifficultyButton()
-        mediumButton.isDifficultyButton()
-        hardButton.isDifficultyButton()
+        easyButton.isMenuButton()
+        mediumButton.isMenuButton()
+        hardButton.isMenuButton()
     }
     
     private func setupLogoImageView() {

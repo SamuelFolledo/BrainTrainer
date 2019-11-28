@@ -35,12 +35,14 @@ class TutorialView: UIView {
     }
     
     func setupView() {
-        videoView.backgroundColor = .black
         easyInstructionLabel.text = "Easy"
         mediumInstructionLabel.text = "Medium"
         hardInstructionLabel.text = "Hard"
         startButton.setTitle("Start", for: .normal)
+        startButton.isMenuButton()
         backButton.setTitle("Back", for: .normal)
+        backButton.isMenuButton()
+        
         self.isOpaque = false
         self.applyShadow()
     }
