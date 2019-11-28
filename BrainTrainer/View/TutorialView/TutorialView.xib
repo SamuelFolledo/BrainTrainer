@@ -10,9 +10,114 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialView" customModule="BrainTrainer" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3qB-Kq-63s" userLabel="labels Stack View">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5rr-67-dUh" userLabel="easy Stack View">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="126.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hil-pH-Ugt">
+                                    <rect key="frame" x="0.0" y="0.0" width="27.5" height="28"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top card's text must match the bottom card's text color, disregarding the text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNk-dJ-m1k">
+                                    <rect key="frame" x="37.5" y="0.0" width="376.5" height="83.5"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="ZNk-dJ-m1k" firstAttribute="width" secondItem="5rr-67-dUh" secondAttribute="width" multiplier="0.9" priority="250" id="YSI-yd-asM"/>
+                                <constraint firstItem="Hil-pH-Ugt" firstAttribute="width" relation="lessThanOrEqual" secondItem="5rr-67-dUh" secondAttribute="width" multiplier="1:15" id="igA-e3-PGY"/>
+                            </constraints>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3yk-0p-CJg" userLabel="medium Stack View">
+                            <rect key="frame" x="0.0" y="136.5" width="414" height="127"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnA-XA-Y3k">
+                                    <rect key="frame" x="0.0" y="0.0" width="27.5" height="28"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Black cards = White card's opposite answer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFC-SX-BQ8">
+                                    <rect key="frame" x="37.5" y="0.0" width="376.5" height="56"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="cFC-SX-BQ8" firstAttribute="width" secondItem="3yk-0p-CJg" secondAttribute="width" multiplier="0.9" priority="250" id="K8E-cZ-j48"/>
+                                <constraint firstItem="YnA-XA-Y3k" firstAttribute="width" relation="lessThanOrEqual" secondItem="3yk-0p-CJg" secondAttribute="width" multiplier="1:15" id="tiz-af-el7"/>
+                            </constraints>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Vc-AX-DfM" userLabel="hard Stack View">
+                            <rect key="frame" x="0.0" y="273.5" width="414" height="126.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7k-6V-xzM">
+                                    <rect key="frame" x="0.0" y="0.0" width="27.5" height="28"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green cards are Yes, and Red cards are No by default" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYZ-CY-tHq">
+                                    <rect key="frame" x="37.5" y="0.0" width="376.5" height="56"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="PYZ-CY-tHq" firstAttribute="width" secondItem="7Vc-AX-DfM" secondAttribute="width" multiplier="0.9" priority="250" id="5F6-sw-VRc"/>
+                                <constraint firstItem="f7k-6V-xzM" firstAttribute="width" relation="lessThanOrEqual" secondItem="7Vc-AX-DfM" secondAttribute="width" multiplier="1:15" id="ZQj-jT-EX4"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="5rr-67-dUh" firstAttribute="width" secondItem="3qB-Kq-63s" secondAttribute="width" id="HAL-YM-AYO"/>
+                        <constraint firstItem="3yk-0p-CJg" firstAttribute="width" secondItem="3qB-Kq-63s" secondAttribute="width" id="p1s-YN-ECJ"/>
+                        <constraint firstItem="7Vc-AX-DfM" firstAttribute="width" secondItem="3qB-Kq-63s" secondAttribute="width" id="rid-ne-PQH"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="2cI-sQ-rRB" userLabel="buttons Stack View">
+                    <rect key="frame" x="0.0" y="425" width="414" height="75"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ja-5C-IIL">
+                            <rect key="frame" x="0.0" y="0.0" width="187" height="75"/>
+                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
+                            <state key="normal" title="Back">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7g-Ui-6o7">
+                            <rect key="frame" x="227" y="0.0" width="187" height="75"/>
+                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
+                            <state key="normal" title="Start">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="top" secondItem="3qB-Kq-63s" secondAttribute="top" id="6vD-uu-NVO"/>
+                <constraint firstItem="2cI-sQ-rRB" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.15" id="Fy8-YR-6pR"/>
+                <constraint firstItem="2cI-sQ-rRB" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="LdB-wr-SMo"/>
+                <constraint firstItem="2cI-sQ-rRB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OHn-DC-ui8"/>
+                <constraint firstItem="2cI-sQ-rRB" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="bc0-fL-ww4"/>
+                <constraint firstItem="3qB-Kq-63s" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="gN8-qB-loB"/>
+                <constraint firstItem="3qB-Kq-63s" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rNN-jq-hvl"/>
+                <constraint firstItem="3qB-Kq-63s" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="tkf-kA-3RN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="153"/>
         </view>
