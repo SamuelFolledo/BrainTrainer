@@ -9,64 +9,41 @@
 import UIKit
 
 class TutorialView: UIView {
-    var color: Color {
-        didSet {
-            colorLabel.textColor = color.textColor
-        }
-    }
-    var text: Color {
-        didSet {
-            colorLabel.text = text.text
-        }
-    }
-    var cardColor: CardColor {
-        didSet {
-            backgroundView.backgroundColor = cardColor.color
-            switch cardColor {
-            case .white, .green, .red:
-                while colorLabel.textColor == cardColor.color { //Error check: we dont want the colorLabel's textColor to be the same as the background, so we will update color to a new Color which will update the colorLabel's textColor
-                    color = Color()
-                }
-            case .black:
-                if colorLabel.textColor == cardColor.color { //we need this check because we do not want to change bottom card's textColor to be white
-                    colorLabel.textColor = .white
-                }
-            }
-        }
-    }
+    
+    
 //MARK: IBOutlets
     @IBOutlet weak var videoView: UIView!
-    @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var easyInstructionLabel: UILabel!
+    @IBOutlet weak var mediumInstructionLabel: UILabel!
+    @IBOutlet weak var hardInstructionLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton!
+    
     
     override init(frame: CGRect) { //for programmatically
-        cardColor = CardColor.white
-        color = Color()
-        text = Color()
         super.init(frame: frame)
         initializeXibFile()
-        setupView() //idk why it is required
+        setupView()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        cardColor = CardColor.white
-        color = Color()
-        text = Color()
         super.init(coder: aDecoder)
         initializeXibFile()
         setupView() //required or it won't update colorLabel
     }
     
     func setupView() {
-        videoView.backgroundColor = cardColor.color
-        instructionLabel.text = text.text
-        instructionLabel.textColor = color.textColor
+        videoView.backgroundColor = .black
+        easyInstructionLabel.text = "Easy"
+        mediumInstructionLabel.text = "Medium"
+        hardInstructionLabel.text = "Hard"
+        startButton.setTitle("Start", for: .normal)
         self.isOpaque = false
         self.applyShadow()
     }
 
     func initializeXibFile() {
         let bundle = Bundle.init(for: CardView.self)
-        if let viewsToAdd = bundle.loadNibNamed("CardView", owner: self, options: nil), let contentView = viewsToAdd.first as? UIView {
+        if let viewsToAdd = bundle.loadNibNamed("TutorialView", owner: self, options: nil), let contentView = viewsToAdd.first as? UIView {
             addSubview(contentView)
             contentView.frame = self.bounds
             contentView.autoresizingMask = [.flexibleHeight,
