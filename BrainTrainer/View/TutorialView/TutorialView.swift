@@ -17,6 +17,7 @@ class TutorialView: UIView {
     @IBOutlet weak var mediumInstructionLabel: UILabel!
     @IBOutlet weak var hardInstructionLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     
     override init(frame: CGRect) { //for programmatically
@@ -37,6 +38,7 @@ class TutorialView: UIView {
         mediumInstructionLabel.text = "Medium"
         hardInstructionLabel.text = "Hard"
         startButton.setTitle("Start", for: .normal)
+        backButton.setTitle("Back", for: .normal)
         self.isOpaque = false
         self.applyShadow()
     }
