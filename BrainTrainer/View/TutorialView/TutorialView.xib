@@ -36,8 +36,8 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top card's text must match the bottom card's text color, disregarding the text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8c-V7-82Y">
-                                    <rect key="frame" x="45" y="0.0" width="330" height="111.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top card's text must match the bottom card's text color" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8c-V7-82Y">
+                                    <rect key="frame" x="45" y="0.0" width="330" height="83.5"/>
                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -97,18 +97,18 @@
                         <constraint firstItem="7Vc-AX-DfM" firstAttribute="width" secondItem="3qB-Kq-63s" secondAttribute="width" id="rid-ne-PQH"/>
                     </constraints>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="2cI-sQ-rRB" userLabel="buttons Stack View">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2cI-sQ-rRB" userLabel="buttons Stack View">
                     <rect key="frame" x="0.0" y="425" width="375" height="75"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ja-5C-IIL">
-                            <rect key="frame" x="0.0" y="0.0" width="167.5" height="75"/>
+                            <rect key="frame" x="0.0" y="0.0" width="177.5" height="75"/>
                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
                             <state key="normal" title="Back">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7g-Ui-6o7">
-                            <rect key="frame" x="207.5" y="0.0" width="167.5" height="75"/>
+                            <rect key="frame" x="197.5" y="0.0" width="177.5" height="75"/>
                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
                             <state key="normal" title="Start">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
