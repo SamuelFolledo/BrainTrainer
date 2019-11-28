@@ -9,7 +9,8 @@
 import UIKit
 
 class TutorialView: UIView {
-    
+//MARK: Properties
+    var gameDifficulty: GameDifficulty!
     
 //MARK: IBOutlets
     @IBOutlet weak var easyInstructionLabel: UILabel!
@@ -35,16 +36,16 @@ class TutorialView: UIView {
     }
     
     func setupView() {
-        easyInstructionLabel.text = "Easy"
-        mediumInstructionLabel.text = "Medium"
-        hardInstructionLabel.text = "Hard"
+//        easyInstructionLabel.text = "Easy"
+//        mediumInstructionLabel.text = "Medium"
+//        hardInstructionLabel.text = "Hard"
         startButton.setTitle("Start", for: .normal)
         startButton.isMenuButton()
         backButton.setTitle("Back", for: .normal)
         backButton.isMenuButton()
         
         self.isOpaque = false
-        self.applyShadow()
+//        self.applyShadow()
     }
 
     func initializeXibFile() {
