@@ -10,7 +10,21 @@ import UIKit
 
 class TutorialView: UIView {
 //MARK: Properties
-    var gameDifficulty: GameDifficulty!
+    var gameDifficulty: GameDifficulty! {
+        didSet {
+            switch gameDifficulty {
+            case .easy:
+                mediumStackView.alpha = 0
+                hardStackView.alpha = 0
+            case .medium:
+                mediumStackView.alpha = 1
+                hardStackView.alpha = 0
+            default:
+                mediumStackView.alpha = 1
+                hardStackView.alpha = 1
+            }
+        }
+    }
     
 //MARK: IBOutlets
     @IBOutlet weak var easyInstructionLabel: UILabel!
@@ -21,7 +35,6 @@ class TutorialView: UIView {
     @IBOutlet weak var hardStackView: UIStackView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
-    
     
     override init(frame: CGRect) { //for programmatically
         super.init(frame: frame)
@@ -36,16 +49,11 @@ class TutorialView: UIView {
     }
     
     func setupView() {
-//        easyInstructionLabel.text = "Easy"
-//        mediumInstructionLabel.text = "Medium"
-//        hardInstructionLabel.text = "Hard"
         startButton.setTitle("Start", for: .normal)
         startButton.isMenuButton()
         backButton.setTitle("Back", for: .normal)
         backButton.isMenuButton()
-        
         self.isOpaque = false
-//        self.applyShadow()
     }
 
     func initializeXibFile() {
