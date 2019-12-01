@@ -113,10 +113,12 @@ class MenuVC: UIViewController {
     
     private func configureDifficultyStackView(toHide: Bool) {
         if toHide { //will hide
+            selectDifficultyLabel.text = tutorialView.gameDifficulty.rawValue.capitalizingFirstLetter()
             let width = self.view.frame.width
             difficultyButtonsStackView_trailing.constant += width
             difficultyButtonsStackView_leading.constant -= width
         } else { //show the stack view by returning the leading and trailing constraints to its original cached value
+            selectDifficultyLabel.text = "Select Difficulty"
             difficultyButtonsStackView_trailing.constant = difficultyButtonsStackView_trailingCache
             difficultyButtonsStackView_leading.constant = difficultyButtonsStackView_leadingCache
         }
