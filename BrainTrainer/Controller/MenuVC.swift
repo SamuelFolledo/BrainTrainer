@@ -44,13 +44,6 @@ class MenuVC: UIViewController {
         hideTutorialView()
     }
     
-//MARK: Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let difficulty: GameDifficulty = sender as? GameDifficulty else { return }
-        let gameVC: GameVC = segue.destination as! GameVC
-        gameVC.gameDifficulty = difficulty
-    }
-    
 //MARK: Private Methods
     private func setupViews() {
         easyButton.isMenuButton()
@@ -107,8 +100,12 @@ class MenuVC: UIViewController {
         }
     }
     
-    @objc func startGame() { //so we can addTarget to a view's button
-        performSegue(withIdentifier: kTOGAMEVC, sender: tutorialView.gameDifficulty)
+    @objc func startGame() { //@objc func so we can addTarget to button
+        let nav = self.navigationController
+        nav?.view.layer.add(CATransition().segueFromRight(), forKey: nil)
+        let vc:GameVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: kGAMEVC) as! GameVC //get our VC from Main storyboard
+        vc.gameDifficulty = tutorialView.gameDifficulty
+        nav?.pushViewController(vc, animated: false)
     }
     
     private func configureDifficultyStackView(toHide: Bool) {
