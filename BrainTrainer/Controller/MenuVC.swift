@@ -11,7 +11,8 @@ import UIKit
 class MenuVC: UIViewController {
 //MARK: Properties
     var tutorial_leftCache: CGFloat!
-    var difficultyButtonsStackView_trailingCache
+    var difficultyButtonsStackView_trailingCache: CGFloat!
+    var difficultyButtonsStackView_leadingCache: CGFloat!
     
 //MARK: IBOutlets
     @IBOutlet weak var logoImageView: UIImageView!
@@ -25,6 +26,7 @@ class MenuVC: UIViewController {
     @IBOutlet weak var tutorialView: TutorialView!
     @IBOutlet weak var tutorial_left: NSLayoutConstraint!
     @IBOutlet weak var difficultyButtonsStackView_trailing: NSLayoutConstraint!
+    @IBOutlet weak var difficultyButtonsStackView_leading: NSLayoutConstraint!
     
 //MARK: App LifeCycle
     override func viewDidLoad() {
@@ -57,6 +59,8 @@ class MenuVC: UIViewController {
         tutorial_leftCache = tutorial_left.constant //cache our left constraint
         tutorialView.startButton.addTarget(self, action: #selector(startGame), for: .touchUpInside) //add start method to start button
         tutorialView.backButton.addTarget(self, action: #selector(hideTutorialView), for: .touchUpInside) //add back
+        difficultyButtonsStackView_trailingCache = difficultyButtonsStackView_trailing.constant
+        difficultyButtonsStackView_leadingCache = difficultyButtonsStackView_leading.constant
     }
     
     private func setupLogoImageView() {
@@ -90,7 +94,7 @@ class MenuVC: UIViewController {
         let width = self.view.frame.width
         tutorial_left.constant -= (width - (width / 9)) //subtracting will go left //divided by 9 because its width is safeArea's width / 8
         UIView.animate(withDuration: 0.5) {
-            self.configureDifficultyViews(toHide: true)
+            self.configureDifficultyStackView(toHide: true)
             self.view.layoutIfNeeded() //Lays out the subviews immediately, if layout updates are pending.
         }
     }
@@ -98,7 +102,7 @@ class MenuVC: UIViewController {
     @objc func hideTutorialView() { //so we can addTarget to a view's button
         tutorial_left.constant = tutorial_leftCache //subtracting will go left //divided by 9 because its width is safeArea's width / 8
         UIView.animate(withDuration: 0.5) {
-            self.configureDifficultyViews(toHide: false)
+            self.configureDifficultyStackView(toHide: false)
             self.view.layoutIfNeeded() //Lays out the subviews immediately, if layout updates are pending.
         }
     }
@@ -107,23 +111,14 @@ class MenuVC: UIViewController {
         performSegue(withIdentifier: kTOGAMEVC, sender: tutorialView.gameDifficulty)
     }
     
-    private func configureDifficultyViews(toHide: Bool) {
+    private func configureDifficultyStackView(toHide: Bool) {
         if toHide { //will hide
-            selectDifficultyLabel.alpha = 0
-            easyButton.alpha = 0
-            easyScoreLabel.alpha = 0
-            mediumButton.alpha = 0
-            mediumScoreLabel.alpha = 0
-            hardButton.alpha = 0
-            hardScoreLabel.alpha = 0
-        } else {
-            selectDifficultyLabel.alpha = 1
-            easyButton.alpha = 1
-            easyScoreLabel.alpha = 1
-            mediumButton.alpha = 1
-            mediumScoreLabel.alpha = 1
-            hardButton.alpha = 1
-            hardScoreLabel.alpha = 1
+            let width = self.view.frame.width
+            difficultyButtonsStackView_trailing.constant += width
+            difficultyButtonsStackView_leading.constant -= width
+        } else { //show the stack view by returning the leading and trailing constraints to its original cached value
+            difficultyButtonsStackView_trailing.constant = difficultyButtonsStackView_trailingCache
+            difficultyButtonsStackView_leading.constant = difficultyButtonsStackView_leadingCache
         }
     }
 }
