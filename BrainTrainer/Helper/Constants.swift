@@ -20,3 +20,7 @@ let kPLAYIMAGE: UIImage = UIImage(named: "play")!
 let kEASYHIGHSCORE: String = "easyHighscore"
 let kMEDIUMHIGHSCORE: String = "mediumHighscore"
 let kHARDHIGHSCORE: String = "hardHighscore"
+
+//Storyboard ID
+let kMENUVC: String = "MenuVC"
+let kGAMEVC: String = "GameVC"
