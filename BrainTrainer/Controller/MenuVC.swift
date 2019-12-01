@@ -11,6 +11,7 @@ import UIKit
 class MenuVC: UIViewController {
 //MARK: Properties
     var tutorial_leftCache: CGFloat!
+    var difficultyButtonsStackView_trailingCache
     
 //MARK: IBOutlets
     @IBOutlet weak var logoImageView: UIImageView!
@@ -23,6 +24,7 @@ class MenuVC: UIViewController {
     @IBOutlet weak var hardScoreLabel: UILabel!
     @IBOutlet weak var tutorialView: TutorialView!
     @IBOutlet weak var tutorial_left: NSLayoutConstraint!
+    @IBOutlet weak var difficultyButtonsStackView_trailing: NSLayoutConstraint!
     
 //MARK: App LifeCycle
     override func viewDidLoad() {
