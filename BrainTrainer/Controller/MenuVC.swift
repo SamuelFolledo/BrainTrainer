@@ -109,6 +109,7 @@ class MenuVC: UIViewController {
     }
     
     private func configureDifficultyStackView(toHide: Bool) {
+        logoImageView.applyUpAndDownAnimation()
         if toHide { //will hide
             selectDifficultyLabel.text = tutorialView.gameDifficulty.rawValue.capitalizingFirstLetter()
             let width = self.view.frame.width
