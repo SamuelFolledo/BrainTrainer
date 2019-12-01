@@ -8,8 +8,10 @@
 
 import Foundation
 
-enum GameDifficulty {
+enum GameDifficulty: String {
     case easy, medium, hard
+    
+    
     
     func getInitialMaxTime() -> Double {
         switch self {
