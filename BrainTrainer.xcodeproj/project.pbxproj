@@ -22,6 +22,8 @@
 		33040B5A2388EC9B00AA98F8 /* UIImageView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B592388EC9B00AA98F8 /* UIImageView+extensions.swift */; };
 		33040B5C2388F98F00AA98F8 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B5B2388F98F00AA98F8 /* MenuVC.swift */; };
 		33040B5E2388FFCA00AA98F8 /* UIButton+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33040B5D2388FFCA00AA98F8 /* UIButton+extensions.swift */; };
+		332419902394712A008D970D /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324198F2394712A008D970D /* String+extensions.swift */; };
+		3324199223947286008D970D /* CATransition+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324199123947286008D970D /* CATransition+extensions.swift */; };
 		33568634238A3BF00039987B /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33568633238A3BF00039987B /* UIView+extensions.swift */; };
 		33733B9A238CD6A20028C7B4 /* CardColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33733B99238CD6A20028C7B4 /* CardColor.swift */; };
 		33733B9C238CF3880028C7B4 /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33733B9B238CF3880028C7B4 /* GameDifficulty.swift */; };
@@ -68,6 +70,8 @@
 		33040B592388EC9B00AA98F8 /* UIImageView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+extensions.swift"; sourceTree = "<group>"; };
 		33040B5B2388F98F00AA98F8 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		33040B5D2388FFCA00AA98F8 /* UIButton+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extensions.swift"; sourceTree = "<group>"; };
+		3324198F2394712A008D970D /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
+		3324199123947286008D970D /* CATransition+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+extensions.swift"; sourceTree = "<group>"; };
 		33568633238A3BF00039987B /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
 		33733B99238CD6A20028C7B4 /* CardColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColor.swift; sourceTree = "<group>"; };
 		33733B9B238CF3880028C7B4 /* GameDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 				33040B592388EC9B00AA98F8 /* UIImageView+extensions.swift */,
 				33040B5D2388FFCA00AA98F8 /* UIButton+extensions.swift */,
 				33568633238A3BF00039987B /* UIView+extensions.swift */,
+				3324198F2394712A008D970D /* String+extensions.swift */,
+				3324199123947286008D970D /* CATransition+extensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -369,10 +375,12 @@
 				33733B9C238CF3880028C7B4 /* GameDifficulty.swift in Sources */,
 				33040B462385DC5F00AA98F8 /* GameVC.swift in Sources */,
 				33040B132385D32B00AA98F8 /* SceneDelegate.swift in Sources */,
+				332419902394712A008D970D /* String+extensions.swift in Sources */,
 				33040B5C2388F98F00AA98F8 /* MenuVC.swift in Sources */,
 				33568634238A3BF00039987B /* UIView+extensions.swift in Sources */,
 				33040B5E2388FFCA00AA98F8 /* UIButton+extensions.swift in Sources */,
 				33040B552385F9E800AA98F8 /* CardView.swift in Sources */,
+				3324199223947286008D970D /* CATransition+extensions.swift in Sources */,
 				33040B4D2385DC9100AA98F8 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

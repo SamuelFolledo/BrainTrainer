@@ -194,7 +194,7 @@ class GameVC: UIViewController {
             gameDifficulty.setHighScore(score: score) //score is now our new high score
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { //add a 1 sec delay before dismissing
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     
