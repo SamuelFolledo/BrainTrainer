@@ -9,7 +9,8 @@
 import UIKit
 
 protocol ColorProtocol {
-    
+    var textColor: UIColor { get }
+    var text: String { get }
 }
 
 enum Color {
@@ -59,9 +60,3 @@ extension Color: CaseIterable {
         self = Color.allCases[Int(arc4random_uniform(UInt32(Color.allCases.count)))]
     }
 }
-
-//extension Color: Equatable {
-//    static func ==(lhs: Color, rhs: Color) -> Bool { //checks if Colors instances are the same
-//        return lhs.text == rhs.text
-//    }
-//}
