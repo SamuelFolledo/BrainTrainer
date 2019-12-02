@@ -63,28 +63,6 @@ class CardView: UIView {
         self.isOpaque = false
         self.applyShadow()
     }
-    
-    func addBlackBackground() {
-        cardColor = .black
-//        backgroundView.backgroundColor = .black
-//        if colorLabel.textColor == .black { //we need this check because we do not want to change bottom card's textColor to be white
-//            colorLabel.textColor = .white
-//        }
-    }
-    
-    func addRedBackground() {
-        backgroundView.backgroundColor = .red
-        while colorLabel.textColor == .red { //Error check: we dont want the colorLabel's textColor to be red like the background, so we will update color to a new Color which will update the colorLabel's textColor
-            color = Color()
-        }
-    }
-    
-    func addGreenBackground() {
-        backgroundView.backgroundColor = .green
-        while colorLabel.textColor == .green { //Error check: we dont want the colorLabel's textColor to be red like the background, so we will update color to a new Color which will update the colorLabel's textColor
-            color = Color()
-        }
-    }
 
     func initializeXibFile() {
         let bundle = Bundle.init(for: CardView.self)
