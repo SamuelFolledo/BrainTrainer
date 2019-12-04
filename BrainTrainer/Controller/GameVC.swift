@@ -14,7 +14,7 @@ enum GameState {
 
 class GameVC: UIViewController {
 //MARK: Properties
-    var gameState: GameState! {
+    var gameState: GameState? {
         didSet {
             switch gameState {
             case .playing:
@@ -28,12 +28,13 @@ class GameVC: UIViewController {
             }
         }
     }
-    var gameDifficulty: GameDifficulty!
+    var gameDifficulty: GameDifficulty?
     var cardColorAsTuple:(white:Bool, black:Bool, green:Bool, red:Bool) = (true, false, false, false) //will be needed for evaluating answers depending on the Card's bg color
-    var maxTime: Double!
-    var timer: Timer!
-    var timerCounter: Double! {
+    var maxTime: Double?
+    var timer: Timer?
+    var timerCounter: Double? {
         didSet {
+            guard let timerCounter = timerCounter else { return }
             timeLabel.text = "\(String(format: "%.1f", timerCounter))" //round up to 1 decimal place
             if timerCounter <= 0 {
                 timeLabel.text = "0.0"
@@ -44,13 +45,15 @@ class GameVC: UIViewController {
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
-            if score % 3 == 0 && maxTime > 1 { //everytime user scores 3 points, reduce the time. But maxTime will not go lower than 1 seconds
-                maxTime -= 0.1
+            guard let _ = maxTime, maxTime! > 1 else { return }
+            if score % 3 == 0 { //everytime user scores 3 points, reduce the time. But maxTime will not go lower than 1 seconds
+                self.maxTime! -= 0.1
             }
         }
     }
-    var pausesLeft: Int! {
+    var pausesLeft: Int? {
         didSet {
+            guard let pausesLeft = pausesLeft else { return }
             switch pausesLeft { //different ways to compare switch values
             case let num where num == 0:
                 pauseLabel.text = "Warning! This is your last pause"
@@ -87,6 +90,7 @@ class GameVC: UIViewController {
         isCorrectImageView.isHidden = true
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
         pausesLeft = 3
+        guard let gameDifficulty = gameDifficulty else { return }
         maxTime = gameDifficulty.getInitialMaxTime()
         timerCounter = maxTime
         gameState = .playing
@@ -161,6 +165,7 @@ class GameVC: UIViewController {
     
     private func pauseGame() {
         pauseButton.setImage(kPLAYIMAGE, for: .normal)
+        guard let timer = timer else { return }
         timer.invalidate() //pause the timer
         topCardView.fadeOut(duration: 0.3)
         bottomCardView.fadeOut(duration: 0.3)
@@ -168,7 +173,8 @@ class GameVC: UIViewController {
         noButton.fadeOut(duration: 0.3)
         yesButton.isEnabled = false
         noButton.isEnabled = false
-        pausesLeft -= 1
+        guard let _ = pausesLeft else { return }
+        self.pausesLeft! -= 1
     }
     
     private func playGame() {
@@ -186,12 +192,14 @@ class GameVC: UIViewController {
     }
     
     private func gameOver() {
-        timer.invalidate()
+        guard let _ = timer else { return }
+        timer!.invalidate()
         showIsCorrectImageView(isCorrect: false) //user answered wrong
         yesButton.isEnabled = false
         noButton.isEnabled = false
-        if score > gameDifficulty.getHighScore() {
-            gameDifficulty.setHighScore(score: score) //score is now our new high score
+        guard let _ = gameDifficulty else { return }
+        if score > self.gameDifficulty!.getHighScore() {
+            gameDifficulty!.setHighScore(score: score) //score is now our new high score
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { //add a 1 sec delay before dismissing
             self.navigationController?.popToRootViewController(animated: true)
@@ -216,6 +224,7 @@ class GameVC: UIViewController {
     
 //MARK: Helper Methods
     @objc func updateGameTimer() {
-        timerCounter -= 0.1
+        guard let _ = timerCounter else { return }
+        timerCounter! -= 0.1
     }
 }
