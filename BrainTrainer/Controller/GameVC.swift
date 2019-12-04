@@ -101,7 +101,7 @@ class GameVC: UIViewController {
         topCardView.text = Color() //SET a new random color
         topCardView.colorLabel.textColor = .black //keep this black
         bottomCardView.text = Color() //setting text to a new Color will update the card's text
-        bottomCardView.color = Color() //setting color to a new Color will update the card's textColor
+        bottomCardView.textColor = Color() //setting color to a new Color will update the card's textColor
         var cardColor: CardColor = CardColor.white
         switch gameDifficulty { //change background
         case .medium: //make a black or white card
@@ -121,12 +121,12 @@ class GameVC: UIViewController {
     private func evaluateAnswer(userSelectedYes: Bool) {
         switch cardColorAsTuple {
         case (white:true, black:false, green:false, red:false): //WHITE
-            if (topCardView.text == bottomCardView.color && userSelectedYes) || (topCardView.text != bottomCardView.color && !userSelectedYes) { //if text and color are the equal and user said yes OR if text and color are not equal and user said no
+            if (topCardView.text == bottomCardView.textColor && userSelectedYes) || (topCardView.text != bottomCardView.textColor && !userSelectedYes) { //if text and color are the equal and user said yes OR if text and color are not equal and user said no
                 correctAnswer()
                 return
             }
         case (white:false, black:true, green:false, red:false): //BLACK
-            if (topCardView.text == bottomCardView.color && !userSelectedYes) || (topCardView.text != bottomCardView.color && userSelectedYes) {
+            if (topCardView.text == bottomCardView.textColor && !userSelectedYes) || (topCardView.text != bottomCardView.textColor && userSelectedYes) {
                 correctAnswer()
                 return
             }
