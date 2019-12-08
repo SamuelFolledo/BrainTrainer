@@ -91,7 +91,7 @@ class GameVC: UIViewController {
         isCorrectImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
         pausesLeft = 3
         guard let gameDifficulty = gameDifficulty else { return }
-        maxTime = gameDifficulty.getInitialMaxTime()
+        maxTime = gameDifficulty.initialMaxTime
         timerCounter = maxTime
         gameState = .playing
     }
@@ -198,7 +198,7 @@ class GameVC: UIViewController {
         yesButton.isEnabled = false
         noButton.isEnabled = false
         guard let _ = gameDifficulty else { return }
-        if score > self.gameDifficulty!.getHighScore() {
+        if score > self.gameDifficulty!.highScore {
             gameDifficulty!.setHighScore(score: score) //score is now our new high score
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { //add a 1 sec delay before dismissing

@@ -11,20 +11,7 @@ import Foundation
 enum GameDifficulty: String {
     case easy, medium, hard
     
-    
-    
-    func getInitialMaxTime() -> Double {
-        switch self {
-        case .easy:
-            return 5
-        case .medium:
-            return 4
-        case .hard:
-            return 3
-        }
-    }
-    
-    func getHighScore() -> Int {
+    var highScore: Int {
         switch self {
         case .easy:
             return UserDefaults.standard.integer(forKey: kEASYHIGHSCORE)
@@ -32,6 +19,17 @@ enum GameDifficulty: String {
             return UserDefaults.standard.integer(forKey: kMEDIUMHIGHSCORE)
         case .hard:
             return UserDefaults.standard.integer(forKey: kHARDHIGHSCORE)
+        }
+    }
+    
+    var initialMaxTime: Double {
+        switch self {
+        case .easy:
+            return 5
+        case .medium:
+            return 4
+        case .hard:
+            return 3
         }
     }
     
