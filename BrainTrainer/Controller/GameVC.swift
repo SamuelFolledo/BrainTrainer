@@ -34,9 +34,9 @@ class GameVC: UIViewController {
     var timer: Timer?
     var timerCounter: Double? {
         didSet {
-            guard let timerCounter = timerCounter else { return }
-            timeLabel.text = "\(String(format: "%.1f", timerCounter))" //round up to 1 decimal place
-            if timerCounter <= 0 {
+            guard let _ = timerCounter else { return }
+            timeLabel.text = "\(String(format: "%.1f", timerCounter!))" //round up to 1 decimal place
+            if timerCounter! <= 0 {
                 timeLabel.text = "0.0"
                 gameState = .gameOver
             }
@@ -102,10 +102,11 @@ class GameVC: UIViewController {
     
     private func updateCardColor() {
         cardColorAsTuple = (white:true, black:false, green:false, red:false) //RESET as white being true
-        topCardView.text = Color() //SET a new random color
+        let color = Color()
+        topCardView.text = color //SET a new random color
         topCardView.colorLabel.textColor = .black //keep this black
         bottomCardView.text = Color() //setting text to a new Color will update the card's text
-        bottomCardView.textColor = Color() //setting color to a new Color will update the card's textColor
+        bottomCardView.textColor = Bool.random() ? color : Color() //setting color to a new Color will update the card's textColor
         var cardColor: CardColor = CardColor.white
         switch gameDifficulty { //change background
         case .medium: //make a black or white card
