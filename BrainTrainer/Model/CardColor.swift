@@ -27,19 +27,6 @@ enum CardColor {
     init() {
         self = CardColor.allCases[Int(arc4random_uniform(UInt32(CardColor.allCases.count)))]
     }
-    
-    func getCardColorAsTuple() -> (white:Bool, black:Bool, green:Bool, red:Bool) {
-        switch self {
-        case .white:
-            return (white:true, black:false, green:false, red:false)
-        case .black:
-            return (white:false, black:true, green:false, red:false)
-        case .green:
-            return (white:false, black:false, green:true, red:false)
-        case .red:
-            return (white:false, black:false, green:false, red:true)
-        }
-    }
 }
 
 extension CardColor: CaseIterable {
