@@ -29,7 +29,6 @@ class GameVC: UIViewController {
         }
     }
     var gameDifficulty: GameDifficulty?
-    var cardColorAsTuple:(white:Bool, black:Bool, green:Bool, red:Bool) = (true, false, false, false) //will be needed for evaluating answers depending on the Card's bg color
     var maxTime: Double?
     var timer: Timer?
     var timerCounter: Double? {
@@ -101,7 +100,6 @@ class GameVC: UIViewController {
     }
     
     private func updateCardColor() {
-        cardColorAsTuple = (white:true, black:false, green:false, red:false) //RESET as white being true
         let color = Color()
         topCardView.text = color //SET a new random color
         topCardView.colorLabel.textColor = .black //keep this black
@@ -120,33 +118,30 @@ class GameVC: UIViewController {
         }
         topCardView.cardColor = cardColor //assign cardColor
         bottomCardView.cardColor = cardColor
-        cardColorAsTuple = cardColor.getCardColorAsTuple() //populate our cardColorAsTuple property to see which color is true
     }
     
     private func evaluateAnswer(userSelectedYes: Bool) {
-        switch cardColorAsTuple {
-        case (white:true, black:false, green:false, red:false): //WHITE
+        switch bottomCardView.cardColor { //check card color and evaluate answer
+        case .white: //WHITE
             if (topCardView.text == bottomCardView.textColor && userSelectedYes) || (topCardView.text != bottomCardView.textColor && !userSelectedYes) { //if text and color are the equal and user said yes OR if text and color are not equal and user said no
                 correctAnswer()
                 return
             }
-        case (white:false, black:true, green:false, red:false): //BLACK
+        case .black: //BLACK
             if (topCardView.text == bottomCardView.textColor && !userSelectedYes) || (topCardView.text != bottomCardView.textColor && userSelectedYes) {
                 correctAnswer()
                 return
             }
-        case (white:false, black:false, green:true, red:false): //GREEN
+        case .green: //GREEN
             if userSelectedYes { //if green card - yes answer
                 correctAnswer()
                 return
             }
-        case (white:false, black:false, green:false, red:true): //RED
+        case .red: //RED
             if !userSelectedYes { //if red card - say no
                 correctAnswer()
                 return
             }
-        default:
-            print("weird card \(cardColorAsTuple)")
         }
         gameState = .gameOver
     }
