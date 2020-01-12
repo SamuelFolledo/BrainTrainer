@@ -32,3 +32,5 @@ Brain Training Game for iOS written in Swift that trains your brain and hand-eye
 - [Requirements](https://make-school-courses.github.io/MOB-1.1-Introduction-to-Swift/#/Assignments/FinalProject)
 - [Stroop Effect](https://en.wikipedia.org/wiki/Stroop_effect)
 - Sample Implementation: [Color Match](https://www.lumosity.com/en/brain-games/color-match/)
+
+Lincense under [MIT License](LICENSE)
